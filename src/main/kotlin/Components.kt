@@ -1,6 +1,8 @@
 package com.github.mvysny.karibumigration
 
+import com.vaadin.flow.component.Component
 import com.vaadin.flow.component.HasSize
+import com.vaadin.flow.component.html.Div
 
 @Deprecated("use setWidth(null)", replaceWith = ReplaceWith("setWidth(null)"))
 public fun HasSize.setWidthUndefined() {
@@ -11,3 +13,6 @@ public fun HasSize.setWidthUndefined() {
 public fun HasSize.setHeightUndefined() {
     height = null
 }
+
+@Deprecated("use Div")
+public class CssLayout(vararg components: Component) : Div(*components)
