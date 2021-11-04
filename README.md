@@ -27,6 +27,7 @@ See the tag above for the latest version.
 
 * `HasSize.setWidthUndefined()` is replaced by `setWidth(null)`
 * `HasSize.setHeightUndefined()` is replaced by `setHeight(null)`
+* `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
 
 # License
 
