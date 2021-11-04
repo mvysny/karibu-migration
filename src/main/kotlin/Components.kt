@@ -79,3 +79,8 @@ public fun HasComponents.removeAllComponents() {
 public fun HasComponents.addComponent(child: Component) {
     add(child)
 }
+
+@Deprecated("use remove()")
+public fun HasComponents.removeComponent(child: Component) {
+    remove(child)
+}

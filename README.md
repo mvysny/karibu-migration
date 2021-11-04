@@ -69,6 +69,7 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 * Children:
   * `removeAllComponents()` - replace by `removeAll()`
   * `addComponent()` - replace by `add()`
+  * `removeComponent()` - replace by `remove()`
 
 ## ComboBox
 
