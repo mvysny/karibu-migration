@@ -94,7 +94,8 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 ## Grid
 
 * `Column.setDescriptionGenerator()` - no replacement. See [issue #2315](https://github.com/vaadin/flow-components/issues/2315)
-* `isSelectionAllowed()` - replace with `isSelectionAllowed` from karibu-tools
+* `isSelectionAllowed()` - replace with `isSelectionAllowed` from karibu-tools. Essentially
+   check if the selection model is either `SelectionModel.Multi` or `SelectionModel.Single`.
 
 # License
 
