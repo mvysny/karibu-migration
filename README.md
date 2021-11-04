@@ -62,6 +62,22 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 * `Component.getDescription()` is replaced by `Component.getTooltip()` from karibu-tools, which
     reads the `tooltip` DOM attribute.
 
+## ComboBox
+
+* `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()`
+* use `addThemeVariants(ComboBoxVariant.Small)` instead of `ValoTheme.COMBOBOX_SMALL`.
+* Use `addThemeVariants(ComboBoxVariant.AlignRight)` from karibu-tools instead of `ValoTheme.COMBOBOX_ALIGN_RIGHT`
+* Use `addThemeVariants(ComboBoxVariant.AlignCenter)` from karibu-tools instead of `ValoTheme.COMBOBOX_ALIGN_CENTER`
+* There are no direct replacements for `ValoTheme.COMBOBOX_TINY`, `ValoTheme.COMBOBOX_LARGE`, `ValoTheme.COMBOBOX_HUGE`
+  and `ValoTheme.COMBOBOX_BORDERLESS`.
+
+## RadioButtonGroup
+
+* `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()` from karibu-tools
+* No replacement for `OPTIONGROUP_SMALL` and `OPTIONGROUP_LARGE`
+* RadioButtonGroup is horizontal by default; use `addThemeVariants(RadioGroupVariant.LUMO_VERTICAL)`
+  to lay out buttons horizontally in absence of `ValoTheme.OPTIONGROUP_HORIZONTAL`.
+
 # License
 
 Licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
