@@ -74,6 +74,10 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 * Use `addThemeVariants(ComboBoxVariant.AlignCenter)` from karibu-tools instead of `ValoTheme.COMBOBOX_ALIGN_CENTER`
 * There are no direct replacements for `ValoTheme.COMBOBOX_TINY`, `ValoTheme.COMBOBOX_LARGE`, `ValoTheme.COMBOBOX_HUGE`
   and `ValoTheme.COMBOBOX_BORDERLESS`.
+* `setEmptySelectionAllowed()` -  When [allowed] was set to true, the Vaadin 8 ComboBox used to show an additional item
+   representing the `null` value. This is hard to emulate via DataProvider; the
+   easiest replacement is to simply show or hide the clear button. Also see [Adding support for null values to Vaadin ComboBox](https://mvysny.github.io/vaadin-combobox-null-value/)
+   for more details.
 
 ## RadioButtonGroup
 

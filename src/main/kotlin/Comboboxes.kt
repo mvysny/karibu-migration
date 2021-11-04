@@ -7,3 +7,16 @@ import com.vaadin.flow.component.combobox.ComboBox
 public fun <T> ComboBox<T>.setItemCaptionGenerator(generator: ItemLabelGenerator<T>) {
     itemLabelGenerator = generator
 }
+
+/**
+ * When [allowed] was set to true, the Vaadin 8 ComboBox used to show an additional item
+ * representing the `null` value. This is hard to emulate via DataProvider; the
+ * easiest replacement is to simply show or hide the clear button.
+ *
+ * Also see [Adding support for null values to Vaadin ComboBox](https://mvysny.github.io/vaadin-combobox-null-value/)
+ * for more details.
+ */
+@Deprecated("use setClearButtonVisible()")
+public fun ComboBox<*>.setEmptySelectionAllowed(allowed: Boolean) {
+    isClearButtonVisible = allowed
+}
