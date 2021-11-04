@@ -1,5 +1,6 @@
 package com.github.mvysny.karibumigration
 
+import com.github.mvysny.kaributools.setItemLabelGenerator
 import com.vaadin.flow.component.ItemLabelGenerator
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup
 
