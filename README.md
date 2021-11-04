@@ -53,9 +53,14 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 * `HasSize.setWidthUndefined()` is replaced by `setWidth(null)`
 * `HasSize.setHeightUndefined()` is replaced by `setHeight(null)`
 * `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
-* `Component.setCaption()` is replaced by `Component.setLabel()`.
+* `Component.setCaption()` is replaced by `Component.setLabel()` from karibu-tools.
    * Warning: in order for the caption to be visible, the component must be nested in `VerticalLayout`/`HorizontalLayout`/`FlexLayout`.
+* `Component.getCaption()` is replaced by `Component.getLabel()` from karibu-tools. 
 * `CssLayout` is replaced by a `Div`
+* `Component.setDescription()` is replaced by `Component.setTooltip()` from karibu-tools, which
+    sets the `tooltip` DOM attribute.
+* `Component.getDescription()` is replaced by `Component.getTooltip()` from karibu-tools, which
+    reads the `tooltip` DOM attribute.
 
 # License
 
