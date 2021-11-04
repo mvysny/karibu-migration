@@ -23,7 +23,10 @@ See the tag above for the latest version.
 
 # List of functions
 
-TBA
+## Component and generic
+
+* `HasSize.setWidthUndefined()` is replaced by `setWidth(null)`
+* `HasSize.setHeightUndefined()` is replaced by `setHeight(null)`
 
 # License
 
