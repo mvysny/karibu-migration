@@ -62,9 +62,13 @@ In all cases, the application needs to be converted manually, view-by-view, to V
     sets the `tooltip` DOM attribute.
 * `Component.getDescription()` is replaced by `Component.getTooltip()` from karibu-tools, which
     reads the `tooltip` DOM attribute.
-* `setStyleName()` replaced by `setClassName`; `addStyleName()` replaced by `addClassName()`;
-   `removeStyleName()` replaced by `removeClassName()`
-* `addStyleName(ValoTheme.*)` is generally replaced by `addThemeVariants(XYZVariant.LUMO_*)`
+* Styles:
+  * `setStyleName()` replaced by `setClassName`; `addStyleName()` replaced by `addClassName()`;
+     `removeStyleName()` replaced by `removeClassName()`
+  * `addStyleName(ValoTheme.*)` is generally replaced by `addThemeVariants(XYZVariant.LUMO_*)`
+* Children:
+  * `removeAllComponents()` - replace by `removeAll()`
+  * `addComponent()` - replace by `add()`
 
 ## ComboBox
 
@@ -89,6 +93,7 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 ## Grid
 
 * `Column.setDescriptionGenerator()` - no replacement. See [issue #2315](https://github.com/vaadin/flow-components/issues/2315)
+* `isSelectionAllowed()` - replace with `isSelectionAllowed` from karibu-tools
 
 # License
 

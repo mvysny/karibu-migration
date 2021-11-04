@@ -4,6 +4,7 @@ import com.github.mvysny.kaributools.addClassNames2
 import com.github.mvysny.kaributools.label
 import com.github.mvysny.kaributools.tooltip
 import com.vaadin.flow.component.Component
+import com.vaadin.flow.component.HasComponents
 import com.vaadin.flow.component.HasSize
 import com.vaadin.flow.component.HasStyle
 import com.vaadin.flow.component.html.Div
@@ -67,4 +68,14 @@ public fun HasStyle.removeStyleName(style: String) {
 @Deprecated("use removeClassNames()")
 public fun HasStyle.removeStyleNames(vararg style: String) {
     removeClassNames(*style)
+}
+
+@Deprecated("use removeAll()")
+public fun HasComponents.removeAllComponents() {
+    removeAll()
+}
+
+@Deprecated("use add()")
+public fun HasComponents.addComponent(child: Component) {
+    add(child)
 }
