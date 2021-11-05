@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.github.mvysny.karibumigration
 
 import com.github.mvysny.dynatest.DynaTest

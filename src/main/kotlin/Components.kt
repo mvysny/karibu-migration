@@ -43,12 +43,12 @@ public var Component.description: String?
         tooltip = value
     }
 
-@Deprecated("use addClassNames2()", replaceWith = ReplaceWith("addClassNames2", "com.github.mvysny.kaributools.addClassNames2"))
+@Deprecated("use addClassNames2()", replaceWith = ReplaceWith("addClassNames2(style)", "com.github.mvysny.kaributools.addClassNames2"))
 public fun HasStyle.addStyleName(style: String) {
     addClassNames2(style)
 }
 
-@Deprecated("use addClassNames()", replaceWith = ReplaceWith("addClassNames"))
+@Deprecated("use addClassNames()", replaceWith = ReplaceWith("addClassNames(style)"))
 public fun HasStyle.addStyleNames(vararg style: String) {
     style.forEach { addClassNames2(it) }
 }
@@ -59,12 +59,12 @@ public fun HasStyle.setStyleName(style: String) {
     addClassNames2(style)
 }
 
-@Deprecated("use removeClassName()", replaceWith = ReplaceWith("removeClassName"))
+@Deprecated("use removeClassName()", replaceWith = ReplaceWith("removeClassName(style)"))
 public fun HasStyle.removeStyleName(style: String) {
     removeClassName(style)
 }
 
-@Deprecated("use removeClassNames()", replaceWith = ReplaceWith("removeClassNames"))
+@Deprecated("use removeClassNames()", replaceWith = ReplaceWith("removeClassNames(style)"))
 public fun HasStyle.removeStyleNames(vararg style: String) {
     removeClassNames(*style)
 }
@@ -74,12 +74,12 @@ public fun HasComponents.removeAllComponents() {
     removeAll()
 }
 
-@Deprecated("use add()", replaceWith = ReplaceWith("add"))
+@Deprecated("use add()", replaceWith = ReplaceWith("add()"))
 public fun HasComponents.addComponent(child: Component) {
     add(child)
 }
 
-@Deprecated("use remove()", replaceWith = ReplaceWith("remove"))
+@Deprecated("use remove()", replaceWith = ReplaceWith("remove()"))
 public fun HasComponents.removeComponent(child: Component) {
     remove(child)
 }
