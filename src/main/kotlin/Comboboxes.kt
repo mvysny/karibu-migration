@@ -1,10 +1,22 @@
 package com.github.mvysny.karibumigration
 
 import com.vaadin.flow.component.ItemLabelGenerator
+import com.vaadin.flow.component.checkbox.CheckboxGroup
 import com.vaadin.flow.component.combobox.ComboBox
+import com.vaadin.flow.component.select.Select
 
 @Deprecated("use setItemLabelGenerator()")
 public fun <T> ComboBox<T>.setItemCaptionGenerator(generator: ItemLabelGenerator<T>) {
+    itemLabelGenerator = generator
+}
+
+@Deprecated("use setItemLabelGenerator()")
+public fun <T> Select<T>.setItemCaptionGenerator(generator: ItemLabelGenerator<T>) {
+    itemLabelGenerator = generator
+}
+
+@Deprecated("use setItemLabelGenerator()")
+public fun <T> CheckboxGroup<T>.setItemCaptionGenerator(generator: ItemLabelGenerator<T>) {
     itemLabelGenerator = generator
 }
 

@@ -85,6 +85,14 @@ In all cases, the application needs to be converted manually, view-by-view, to V
    for more details.
 * Given that, replace `setEmptySelectionCaption()` with `setPlaceholder()`.
 
+## NativeSelect -> Select
+
+* `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()`
+
+## CheckBoxGroup
+
+* `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()`
+
 ## RadioButtonGroup
 
 * `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()` from karibu-tools
