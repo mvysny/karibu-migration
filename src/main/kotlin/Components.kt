@@ -25,7 +25,7 @@ public class CssLayout(vararg components: Component) : Div(*components)
 /**
  * Warning: in order for the caption to be visible, the component must be nested in `VerticalLayout`/`HorizontalLayout`/`FlexLayout`.
  */
-@Deprecated("use setLabel")
+@Deprecated("use setLabel", replaceWith = ReplaceWith("label", "com.github.mvysny.kaributools.label"))
 public fun Component.setCaption(caption: String?) {
     label = caption ?: ""
 }
@@ -33,18 +33,17 @@ public fun Component.setCaption(caption: String?) {
 /**
  * Warning: in order for the caption to be visible, the component must be nested in `VerticalLayout`/`HorizontalLayout`/`FlexLayout`.
  */
-@Deprecated("use setLabel")
-public fun Component.getCaption() : String = label
+@Deprecated("use setLabel", replaceWith = ReplaceWith("label", "com.github.mvysny.kaributools.label"))
+public fun Component.getCaption(): String = label
 
-@Deprecated("use setTooltip")
-public fun Component.setDescription(description: String?) {
-    tooltip = description
-}
+@Deprecated("use tooltip", replaceWith = ReplaceWith("tooltip", "com.github.mvysny.kaributools.tooltip"))
+public var Component.description: String?
+    get() = tooltip
+    set(value) {
+        tooltip = value
+    }
 
-@Deprecated("use getTooltip")
-public fun Component.getDescription(): String? = tooltip
-
-@Deprecated("use addClassName()")
+@Deprecated("use addClassNames2()", replaceWith = ReplaceWith("addClassNames2", "com.github.mvysny.kaributools.addClassNames2"))
 public fun HasStyle.addStyleName(style: String) {
     addClassNames2(style)
 }

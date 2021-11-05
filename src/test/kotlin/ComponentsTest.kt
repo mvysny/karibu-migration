@@ -19,4 +19,14 @@ class ComponentsTest : DynaTest({
         s.setHeightUndefined()
         expect(null) { s.height }
     }
+    test("caption") {
+        val s = Span()
+        s.setCaption("foo")
+        expect("foo") { s.getCaption() }
+    }
+    test("tooltip") {
+        val s = Span()
+        s.description = "foo"
+        expect("foo") { s.description }
+    }
 })
