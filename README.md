@@ -83,6 +83,7 @@ In all cases, the application needs to be converted manually, view-by-view, to V
    representing the `null` value. This is hard to emulate via DataProvider; the
    easiest replacement is to simply show or hide the clear button. Also see [Adding support for null values to Vaadin ComboBox](https://mvysny.github.io/vaadin-combobox-null-value/)
    for more details.
+* Given that, replace `setEmptySelectionCaption()` with `setPlaceholder()`.
 
 ## RadioButtonGroup
 

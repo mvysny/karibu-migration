@@ -20,3 +20,8 @@ public fun <T> ComboBox<T>.setItemCaptionGenerator(generator: ItemLabelGenerator
 public fun ComboBox<*>.setEmptySelectionAllowed(allowed: Boolean) {
     isClearButtonVisible = allowed
 }
+
+@Deprecated("use placeholder")
+public fun ComboBox<*>.setEmptySelectionCaption(caption: String) {
+    placeholder = caption
+}
