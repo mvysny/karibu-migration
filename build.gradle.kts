@@ -42,7 +42,7 @@ kotlin {
 
 dependencies {
     api(kotlin("stdlib-jdk8"))
-    api("com.github.mvysny.karibu-tools:karibu-tools:0.6")
+    api("com.github.mvysny.karibu-tools:karibu-tools:0.7")
     // Vaadin 14
     compileOnly("com.vaadin:vaadin-core:14.7.3") {
         // Webjars are only needed when running in Vaadin 13 compatibility mode
