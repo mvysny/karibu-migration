@@ -56,6 +56,7 @@ In all cases, the application needs to be converted manually, view-by-view, to V
   * `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
 * `Component.setCaption()` is replaced by `Component.setLabel()` from karibu-tools.
    * Warning: in order for the caption to be visible, the component must be nested in `VerticalLayout`/`HorizontalLayout`/`FlexLayout`.
+   * Alternatively, wrap the component in the `LabelWrapper` component decorator which adds label to any component.
 * `Component.getCaption()` is replaced by `Component.getLabel()` from karibu-tools. 
 * `CssLayout` is replaced by a `Div`
 * `Component.setDescription()` is replaced by `Component.setTooltip()` from karibu-tools, which
