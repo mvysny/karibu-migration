@@ -24,9 +24,18 @@ class ComponentsTest : DynaTest({
         s.setCaption("foo")
         expect("foo") { s.getCaption() }
     }
-    test("tooltip") {
+    test("description") {
         val s = Span()
         s.description = "foo"
         expect("foo") { s.description }
+    }
+    test("remove all") {
+        Span().removeAllComponents()
+    }
+    test("addComponent") {
+        Span().addComponent(Span())
+    }
+    test("removeComponent") {
+        Span().removeComponent(Span())
     }
 })

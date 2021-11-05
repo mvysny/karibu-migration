@@ -48,7 +48,7 @@ public fun HasStyle.addStyleName(style: String) {
     addClassNames2(style)
 }
 
-@Deprecated("use addClassNames()")
+@Deprecated("use addClassNames()", replaceWith = ReplaceWith("addClassNames"))
 public fun HasStyle.addStyleNames(vararg style: String) {
     style.forEach { addClassNames2(it) }
 }
@@ -59,27 +59,27 @@ public fun HasStyle.setStyleName(style: String) {
     addClassNames2(style)
 }
 
-@Deprecated("use removeClassName()")
+@Deprecated("use removeClassName()", replaceWith = ReplaceWith("removeClassName"))
 public fun HasStyle.removeStyleName(style: String) {
     removeClassName(style)
 }
 
-@Deprecated("use removeClassNames()")
+@Deprecated("use removeClassNames()", replaceWith = ReplaceWith("removeClassNames"))
 public fun HasStyle.removeStyleNames(vararg style: String) {
     removeClassNames(*style)
 }
 
-@Deprecated("use removeAll()")
+@Deprecated("use removeAll()", replaceWith = ReplaceWith("removeAll()"))
 public fun HasComponents.removeAllComponents() {
     removeAll()
 }
 
-@Deprecated("use add()")
+@Deprecated("use add()", replaceWith = ReplaceWith("add"))
 public fun HasComponents.addComponent(child: Component) {
     add(child)
 }
 
-@Deprecated("use remove()")
+@Deprecated("use remove()", replaceWith = ReplaceWith("remove"))
 public fun HasComponents.removeComponent(child: Component) {
     remove(child)
 }
