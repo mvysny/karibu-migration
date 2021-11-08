@@ -8,6 +8,7 @@ class GridsTest : DynaTest({
         val g = Grid<String>()
         val c: Grid.Column<String> = g.addColumn { it }
         c.setDescriptionGenerator { it }
+        c.setExpandRatio(3)
         g.addFooterRowAt(0)
         g.getHeaderRowCount()
         g.getFooterRowCount()

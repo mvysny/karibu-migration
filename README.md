@@ -109,6 +109,7 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 * `Grid.addFooterRowAt(index)` - no replacement; the extension function calls either `prependFooterRow()` or `appendFooterRow()`.
 * `Grid.getFooterRowCount()` - replace with `getFooterRows().size()`.
 * `Grid.getHeaderRowCount()` - replace with `getHeaderRows().size()`.
+* `Grid.setExpandRatio()` - replace with `setFlexGrow()`.
 
 # License
 

@@ -11,6 +11,10 @@ public fun <T> Grid.Column<T>.setDescriptionGenerator(generator: (T) -> String) 
     // do nothing
 }
 
+@Deprecated("Use setFlexGrow()", replaceWith = ReplaceWith("setFlexGrow(ratio)"))
+public fun <T> Grid.Column<T>.setExpandRatio(ratio: Int): Grid.Column<T> =
+    setFlexGrow(ratio)
+
 @Deprecated("No replacement as of now")
 public fun <T> Grid<T>.addFooterRowAt(index: Int): FooterRow {
     require(index >= 0) { "index must be 0 or greater: $index" }
