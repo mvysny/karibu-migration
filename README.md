@@ -124,6 +124,12 @@ rework your layouts to work on top of CSS Flexbox. Docs to read:
 API replacements:
 
 * `setExpandRatio()`: replace with either `expand()` (if the expand ratio is 1) or `setFlexGrow()`
+* `addComponentsAndExpand()`: replace with `addAndExpand()`
+
+# Further ideas
+
+* Add extension functions for Groovy
+* Add extension functions for Lombok
 
 # License
 

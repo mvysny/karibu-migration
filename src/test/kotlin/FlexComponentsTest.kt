@@ -9,5 +9,7 @@ class FlexComponentsTest : DynaTest({
     test("api") {
         VerticalLayout().setExpandRatio(Button("Foo"), 1f)
         HorizontalLayout().setExpandRatio(Button("Foo"), 1f)
+        VerticalLayout().addComponentsAndExpand(Button("Foo"))
+        HorizontalLayout().addComponentsAndExpand(Button("Foo"))
     }
 })
