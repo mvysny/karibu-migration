@@ -1,10 +1,5 @@
-kotlin {
-    explicitApi()
-}
-
 dependencies {
-    api(kotlin("stdlib-jdk8"))
-    api(project(":karibu-migration-common"))
+    api("com.github.mvysny.karibu-tools:karibu-tools:0.7")
     // Vaadin 14
     compileOnly("com.vaadin:vaadin-core:${properties["vaadin14_version"]}") {
         // Webjars are only needed when running in Vaadin 13 compatibility mode
@@ -29,4 +24,4 @@ dependencies {
 }
 
 val configureMavenCentral = ext["configureMavenCentral"] as (artifactId: String) -> Unit
-configureMavenCentral("karibu-migration-kotlin")
+configureMavenCentral("karibu-migration-common")

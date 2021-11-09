@@ -101,6 +101,11 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 * RadioButtonGroup is horizontal by default; use `addThemeVariants(RadioGroupVariant.LUMO_VERTICAL)`
   to lay out buttons horizontally in absence of `ValoTheme.OPTIONGROUP_HORIZONTAL`.
 
+There is the `RadioButtonGroupCompat` class which introduces a better Vaadin 8 compatibility:
+
+* `setItemDescriptionGenerator()`
+* `setHtmlContentAllowed()`
+
 ## Grid
 
 * `Column.setDescriptionGenerator()` - no replacement. See [issue #2315](https://github.com/vaadin/flow-components/issues/2315)

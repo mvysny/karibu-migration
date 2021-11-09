@@ -10,7 +10,13 @@ public fun <T> RadioButtonGroup<T>.setItemCaptionGenerator(generator: ItemLabelG
     setItemLabelGenerator(generator)
 }
 
-@Deprecated("No replacement as of now")
+@Deprecated("Use RadioButtonGroupCompat directly")
 public fun <T> RadioButtonGroup<T>.setItemDescriptionGenerator(generator: ItemLabelGenerator<T>) {
-    // todo implement in a Vaadin 8-compatible way.
+    (this as RadioButtonGroupCompat<T>).setItemDescriptionGenerator(generator)
 }
+
+/**
+ * Mimicks the RadioButtonGroup(String, Collection) constructor, but creates the [RadioButtonGroupCompat] class which offers
+ * better compatibility.
+ */
+public fun <T> RadioButtonGroup(caption: String?, items: Collection<T>): RadioButtonGroupCompat<T> = RadioButtonGroupCompat(caption, items)
