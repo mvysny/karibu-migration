@@ -7,7 +7,11 @@ import com.vaadin.flow.component.radiobutton.RadioButtonGroup
 // workaround for https://github.com/vaadin/flow-components/issues/1681
 @Deprecated("use setItemLabelGenerator() from karibu-tools", replaceWith = ReplaceWith("setItemLabelGenerator(generator)", "com.github.mvysny.kaributools.setItemLabelGenerator"))
 public fun <T> RadioButtonGroup<T>.setItemCaptionGenerator(generator: ItemLabelGenerator<T>) {
-    setItemLabelGenerator(generator)
+    if (this is RadioButtonGroupCompat) {
+        setItemLabelGenerator(generator)
+    } else {
+        setItemLabelGenerator(generator)
+    }
 }
 
 @Deprecated("Use RadioButtonGroupCompat directly")
