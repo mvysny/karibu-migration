@@ -14,9 +14,14 @@ public fun <T> RadioButtonGroup<T>.setItemCaptionGenerator(generator: ItemLabelG
     }
 }
 
-@Deprecated("Use RadioButtonGroupCompat directly")
+@Deprecated("Use RadioButtonGroupCompat directly", level = DeprecationLevel.ERROR)
 public fun <T> RadioButtonGroup<T>.setItemDescriptionGenerator(generator: ItemLabelGenerator<T>) {
     (this as RadioButtonGroupCompat<T>).setItemDescriptionGenerator(generator)
+}
+
+@Deprecated("Use RadioButtonGroupCompat directly", level = DeprecationLevel.ERROR)
+public fun <T> RadioButtonGroup<T>.setHtmlContentAllowed(allowed: Boolean) {
+    (this as RadioButtonGroupCompat<T>).isHtmlContentAllowed = allowed
 }
 
 /**
