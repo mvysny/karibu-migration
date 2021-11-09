@@ -16,8 +16,9 @@ import java.util.Collection;
 /**
  * Mimicks the Vaadin 8 RadioButtonGroup. Supports {@link #setItemDescriptionGenerator(ItemLabelGenerator)}
  * and {@link #setHtmlContentAllowed(boolean)}.
- *
- * @param <T>
+ * <p></p>
+ * todo mavi test in an example project
+ * @param <T> the item type.
  */
 public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
     @NotNull
