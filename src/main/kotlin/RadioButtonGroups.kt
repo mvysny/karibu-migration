@@ -9,3 +9,8 @@ import com.vaadin.flow.component.radiobutton.RadioButtonGroup
 public fun <T> RadioButtonGroup<T>.setItemCaptionGenerator(generator: ItemLabelGenerator<T>) {
     setItemLabelGenerator(generator)
 }
+
+@Deprecated("No replacement as of now")
+public fun <T> RadioButtonGroup<T>.setItemDescriptionGenerator(generator: ItemLabelGenerator<T>) {
+    // todo implement in a Vaadin 8-compatible way.
+}
