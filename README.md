@@ -111,6 +111,20 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 * `Grid.getHeaderRowCount()` - replace with `getHeaderRows().size()`.
 * `Grid.setExpandRatio()` - replace with `setFlexGrow()`.
 
+## FlexComponent/HorizontalLayout/VerticalLayout
+
+The way how HorizontalLayout and VerticalLayout works has been changed completely. There is no
+slot mechanism anymore, and the layouting is now based on CSS Flexbox rather than on
+a Vaadin-specific JavaScript code. You need to relearn how CSS Flexbox works, then
+rework your layouts to work on top of CSS Flexbox. Docs to read:
+
+* [Vaadin docs: Layouts in Platform](https://vaadin.com/docs/v14/guide/upgrading/v8/5-components/#layouts-in-platform)
+* [Vaadin 10 server-side layouting for Vaadin 8 and Android developers](https://mvysny.github.io/Vaadin-10-server-side-layouting-for-Vaadin-8-and-Android-developers/)
+
+API replacements:
+
+* `setExpandRatio()`: replace with either `expand()` (if the expand ratio is 1) or `setFlexGrow()`
+
 # License
 
 Licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
