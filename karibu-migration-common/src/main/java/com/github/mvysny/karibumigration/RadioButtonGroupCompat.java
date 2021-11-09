@@ -1,5 +1,6 @@
 package com.github.mvysny.karibumigration;
 
+import com.github.mvysny.kaributools.HtmlSpan;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ItemLabelGenerator;
 import com.vaadin.flow.component.html.Span;
@@ -15,6 +16,7 @@ import java.util.Collection;
 /**
  * Mimicks the Vaadin 8 RadioButtonGroup. Supports {@link #setItemDescriptionGenerator(ItemLabelGenerator)}
  * and {@link #setHtmlContentAllowed(boolean)}.
+ *
  * @param <T>
  */
 public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
@@ -24,17 +26,16 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
     private ItemLabelGenerator<T> tooltipGenerator = null;
     private boolean htmlContentAllowed = false;
 
-    public RadioButtonGroupCompat()
-    {
+    public RadioButtonGroupCompat() {
     }
 
     /**
      * Mimicks a Vaadin 8 constructor.
+     *
      * @param caption ignored - In Vaadin 14, RadioButtonGroup doesn't support a caption.
-     * @param items the items to show.
+     * @param items   the items to show.
      */
-    public RadioButtonGroupCompat(@Nullable String caption, Collection<T> items)
-    {
+    public RadioButtonGroupCompat(@Nullable String caption, Collection<T> items) {
         // In Vaadin 14, RadioButtonGroup doesn't support a caption.
         setItems(items);
     }
@@ -54,22 +55,18 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
             // https://github.com/vaadin/flow-components/issues/1681
             setRenderer(new TextRenderer<>(generator));
         } else {
-            setRenderer(new ComponentRenderer<>(new SerializableFunction<T, Component>() {
-                @Override
-                public Component apply(T t) {
-                    final String label = generator.apply(t);
-                    final Span span = htmlContentAllowed ? new com.github.mvysny.kaributools.HtmlSpan(label) : new Span(label);
-                    if (tooltipGenerator != null) {
-                        span.getElement().setAttribute("title", tooltipGenerator.apply(t));
-                    }
-                    return span;
+            setRenderer(new ComponentRenderer<>((SerializableFunction<T, Component>) t -> {
+                final String label = generator.apply(t);
+                final Span span = htmlContentAllowed ? new HtmlSpan(label) : new Span(label);
+                if (tooltipGenerator != null) {
+                    span.getElement().setAttribute("title", tooltipGenerator.apply(t));
                 }
+                return span;
             }));
         }
     }
 
-    public void setItemDescriptionGenerator(ItemLabelGenerator<T> generator)
-    {
+    public void setItemDescriptionGenerator(ItemLabelGenerator<T> generator) {
         tooltipGenerator = generator;
         updateRenderer();
     }
