@@ -5,3 +5,6 @@ build
 .gradle
 classes
 .attach_pid*
+target
+node_modules
+webpack.generated.js

@@ -3,8 +3,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.5.31"
+    id("org.gretty") version "3.0.6"
     `maven-publish`
     signing
+    id("com.vaadin") version "0.14.7.3" apply(false)
 }
 
 defaultTasks("clean", "build")

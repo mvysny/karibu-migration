@@ -24,8 +24,8 @@ dependencies {
                 "org.webjars.bowergithub.vaadin", "org.webjars.bowergithub.webcomponents")
                 .forEach { exclude(group = it) }
     }
-    testImplementation("com.github.mvysny.dynatest:dynatest:0.22")
-    testImplementation("org.slf4j:slf4j-simple:1.7.32")
+    testImplementation("com.github.mvysny.dynatest:dynatest:${properties["dynatest_version"]}")
+    testImplementation("org.slf4j:slf4j-simple:${properties["slf4j_version"]}")
 }
 
 val configureMavenCentral = ext["configureMavenCentral"] as (artifactId: String) -> Unit

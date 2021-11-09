@@ -1,4 +1,5 @@
 include(
     "karibu-migration-common",
-    "karibu-migration-kotlin"
+    "karibu-migration-kotlin",
+    "testapp"
 )
