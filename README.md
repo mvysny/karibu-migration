@@ -70,6 +70,14 @@ In all cases, the application needs to be converted manually, view-by-view, to V
   * `addComponent()` - replace by `add()`
   * `removeComponent()` - replace by `remove()`
 
+## UI
+
+It is discouraged to have a custom UI class. If this is necessary, it's better to
+create a separate utility class and store it into the UI instance via `ComponentUtil.setData(UI.getCurrent(), Util.class, util)`.
+Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread/18184719/how-to-correctly-extend-a-ui).
+
+* `UI.getUiRootPath()` - replaced with `VaadinRequest.getCurrent().getContextPath()`
+
 ## ComboBox
 
 * `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()`
