@@ -12,12 +12,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * Mimicks the Vaadin 8 RadioButtonGroup. Supports {@link #setItemDescriptionGenerator(ItemLabelGenerator)}
  * and {@link #setHtmlContentAllowed(boolean)}.
- * <p></p>
- * todo mavi test in an example project
  * @param <T> the item type.
  */
 public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
@@ -37,22 +36,22 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
      * @param items   the items to show.
      */
     @Deprecated
-    public RadioButtonGroupCompat(@Nullable String caption, Collection<T> items) {
+    public RadioButtonGroupCompat(@Nullable String caption, @NotNull Collection<T> items) {
         this(items);
     }
 
-    public RadioButtonGroupCompat(Collection<T> items) {
+    public RadioButtonGroupCompat(@NotNull Collection<T> items) {
         // In Vaadin 14, RadioButtonGroup doesn't support a caption.
         setItems(items);
     }
 
     @Deprecated
-    public void setItemCaptionGenerator(ItemLabelGenerator<T> generator) {
+    public void setItemCaptionGenerator(@NotNull ItemLabelGenerator<T> generator) {
         setItemLabelGenerator(generator);
     }
 
-    public void setItemLabelGenerator(ItemLabelGenerator<T> generator) {
-        this.generator = generator;
+    public void setItemLabelGenerator(@NotNull ItemLabelGenerator<T> generator) {
+        this.generator = Objects.requireNonNull(generator);
         updateRenderer();
     }
 
@@ -72,7 +71,7 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
         }
     }
 
-    public void setItemDescriptionGenerator(ItemLabelGenerator<T> generator) {
+    public void setItemDescriptionGenerator(@Nullable ItemLabelGenerator<T> generator) {
         tooltipGenerator = generator;
         updateRenderer();
     }
@@ -84,5 +83,15 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
 
     public boolean isHtmlContentAllowed() {
         return htmlContentAllowed;
+    }
+
+    @NotNull
+    public ItemLabelGenerator<T> getGenerator() {
+        return generator;
+    }
+
+    @Nullable
+    public ItemLabelGenerator<T> getTooltipGenerator() {
+        return tooltipGenerator;
     }
 }
