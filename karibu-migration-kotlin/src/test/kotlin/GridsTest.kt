@@ -13,4 +13,11 @@ class GridsTest : DynaTest({
         g.getHeaderRowCount()
         g.getFooterRowCount()
     }
+    test("fluent api") {
+        val g = Grid<String>()
+        val c: Grid.Column<String> = g.addColumn { it }
+            .setDescriptionGenerator { it }
+            .setExpandRatio(3)
+            .setCaption("Foo")
+    }
 })

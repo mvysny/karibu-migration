@@ -52,8 +52,6 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 
 * `HasSize.setWidthUndefined()` is replaced by `setWidth(null)`
 * `HasSize.setHeightUndefined()` is replaced by `setHeight(null)`
-* `Label` - no longer a `Div` but an actual `<label>` element. Replace by `Div` or `Span`
-  * `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
 * `Component.setCaption()` is replaced by `Component.setLabel()` from karibu-tools.
    * Warning: in order for the caption to be visible, the component must be nested in `VerticalLayout`/`HorizontalLayout`/`FlexLayout`.
    * Alternatively, wrap the component in the `LabelWrapper` component decorator from karibu-tools which adds label to any component.
@@ -108,13 +106,20 @@ There is the `RadioButtonGroupCompat` class which introduces a better Vaadin 8 c
 
 ## Grid
 
-* `Column.setDescriptionGenerator()` - no replacement. See [issue #2315](https://github.com/vaadin/flow-components/issues/2315)
+Grid:
+
 * `isSelectionAllowed()` - replace with `isSelectionAllowed` from karibu-tools. Essentially
    check if the selection model is either `SelectionModel.Multi` or `SelectionModel.Single`.
 * `Grid.addFooterRowAt(index)` - no replacement; the extension function calls either `prependFooterRow()` or `appendFooterRow()`.
 * `Grid.getFooterRowCount()` - replace with `getFooterRows().size()`.
 * `Grid.getHeaderRowCount()` - replace with `getHeaderRows().size()`.
 * `Grid.setExpandRatio()` - replace with `setFlexGrow()`.
+
+Grid.Column:
+
+* `Column.setDescriptionGenerator()` - no replacement. See [issue #2315](https://github.com/vaadin/flow-components/issues/2315)
+* `Column.setExpandRatio()` - replace with `setFlexGrow()`
+* `Column.setCaption()` - replace with `setHeader()`
 
 ## FlexComponent/HorizontalLayout/VerticalLayout
 
@@ -130,6 +135,13 @@ API replacements:
 
 * `setExpandRatio()`: replace with either `expand()` (if the expand ratio is 1) or `setFlexGrow()`
 * `addComponentsAndExpand()`: replace with `addAndExpand()`
+
+## Label
+
+`Label` is no longer a `Div` but an actual `<label>` element. Usually the best approach is
+to replace label by `Div` or `Span`.
+
+* `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
 
 # Further ideas
 
