@@ -39,7 +39,7 @@ class RadioButtonGroupCompatTest : DynaTest({
     }
     test("items not escaped with tooltips") {
         val r = RadioButtonGroupCompat<String>(
-            null, listOf(
+            listOf(
                 "<strong>strong</strong>",
                 "<i>italics</i>",
                 "<u>underline</u>"
@@ -54,7 +54,7 @@ class RadioButtonGroupCompatTest : DynaTest({
     }
     test("items escaped with tooltips") {
         val r = RadioButtonGroupCompat<String>(
-            null, listOf(
+            listOf(
                 "<strong>strong</strong>",
                 "<i>italics</i>",
                 "<u>underline</u>"

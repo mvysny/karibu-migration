@@ -36,7 +36,12 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
      * @param caption ignored - In Vaadin 14, RadioButtonGroup doesn't support a caption.
      * @param items   the items to show.
      */
+    @Deprecated
     public RadioButtonGroupCompat(@Nullable String caption, Collection<T> items) {
+        this(items);
+    }
+
+    public RadioButtonGroupCompat(Collection<T> items) {
         // In Vaadin 14, RadioButtonGroup doesn't support a caption.
         setItems(items);
     }
