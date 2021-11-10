@@ -28,4 +28,5 @@ public fun <T> RadioButtonGroup<T>.setHtmlContentAllowed(allowed: Boolean) {
  * Mimicks the RadioButtonGroup(String, Collection) constructor, but creates the [RadioButtonGroupCompat] class which offers
  * better compatibility.
  */
+@Deprecated("Use RadioButtonGroupCompat directly")
 public fun <T> RadioButtonGroup(caption: String?, items: Collection<T>): RadioButtonGroupCompat<T> = RadioButtonGroupCompat(caption, items)

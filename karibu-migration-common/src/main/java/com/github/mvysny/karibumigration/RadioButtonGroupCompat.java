@@ -21,7 +21,7 @@ import java.util.Objects;
  */
 public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
     @NotNull
-    private ItemLabelGenerator<T> generator = Object::toString;
+    private ItemLabelGenerator<T> itemLabelGenerator = Object::toString;
     @Nullable
     private ItemLabelGenerator<T> tooltipGenerator = null;
     private boolean htmlContentAllowed = false;
@@ -51,17 +51,17 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
     }
 
     public void setItemLabelGenerator(@NotNull ItemLabelGenerator<T> generator) {
-        this.generator = Objects.requireNonNull(generator);
+        this.itemLabelGenerator = Objects.requireNonNull(generator);
         updateRenderer();
     }
 
     private void updateRenderer() {
         if (tooltipGenerator == null && !htmlContentAllowed) {
             // https://github.com/vaadin/flow-components/issues/1681
-            setRenderer(new TextRenderer<>(generator));
+            setRenderer(new TextRenderer<>(itemLabelGenerator));
         } else {
             setRenderer(new ComponentRenderer<>((SerializableFunction<T, Component>) t -> {
-                final String label = generator.apply(t);
+                final String label = itemLabelGenerator.apply(t);
                 final Span span = htmlContentAllowed ? new HtmlSpan(label) : new Span(label);
                 if (tooltipGenerator != null) {
                     span.getElement().setAttribute("title", tooltipGenerator.apply(t));
@@ -86,12 +86,12 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
     }
 
     @NotNull
-    public ItemLabelGenerator<T> getGenerator() {
-        return generator;
+    public ItemLabelGenerator<T> getItemLabelGenerator() {
+        return itemLabelGenerator;
     }
 
     @Nullable
-    public ItemLabelGenerator<T> getTooltipGenerator() {
+    public ItemLabelGenerator<T> getItemDescriptionGenerator() {
         return tooltipGenerator;
     }
 }
