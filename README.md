@@ -91,6 +91,8 @@ Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread
    easiest replacement is to simply show or hide the clear button. Also see [Adding support for null values to Vaadin ComboBox](https://mvysny.github.io/vaadin-combobox-null-value/)
    for more details.
 * Given that, replace `setEmptySelectionCaption()` with `setPlaceholder()`.
+* `setTextInputAllowed()` - no replacement. ComboBox always allows text input. Use `Select` instead
+   if you want to disable text input.
 
 ## NativeSelect -> Select
 

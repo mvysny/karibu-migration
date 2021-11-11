@@ -25,3 +25,10 @@ public fun ComboBox<*>.setEmptySelectionAllowed(allowed: Boolean) {
 public fun ComboBox<*>.setEmptySelectionCaption(caption: String) {
     placeholder = caption
 }
+
+@Deprecated("Cannot disable text input on ComboBox, you have to use Select instead")
+public fun ComboBox<*>.setTextInputAllowed(allowed: Boolean) {
+    if (!allowed) {
+        throw RuntimeException("Cannot disable text input on ComboBox, you have to use Select instead")
+    }
+}
