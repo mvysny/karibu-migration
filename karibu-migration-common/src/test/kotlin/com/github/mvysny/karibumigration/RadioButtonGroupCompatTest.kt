@@ -32,9 +32,9 @@ class RadioButtonGroupCompatTest : DynaTest({
         )
         r.isHtmlContentAllowed = true
         expectList(
-            "HtmlSpan[]",
-            "HtmlSpan[]",
-            "HtmlSpan[]"
+            "HtmlSpan[innerHTML='<strong>strong</strong>']",
+            "HtmlSpan[innerHTML='<i>italics</i>']",
+            "HtmlSpan[innerHTML='<u>underline</u>']"
         ) { r.getItemLabels() }
     }
     test("items not escaped with tooltips") {
@@ -47,9 +47,9 @@ class RadioButtonGroupCompatTest : DynaTest({
         )
         r.setItemDescriptionGenerator { it }
         expectList(
-            "Span[text='<strong>strong</strong>']",
-            "Span[text='<i>italics</i>']",
-            "Span[text='<u>underline</u>']"
+            "Span[text='<strong>strong</strong>', @title='<strong>strong</strong>']",
+            "Span[text='<i>italics</i>', @title='<i>italics</i>']",
+            "Span[text='<u>underline</u>', @title='<u>underline</u>']"
         ) { r.getItemLabels() }
     }
     test("items escaped with tooltips") {
@@ -63,9 +63,9 @@ class RadioButtonGroupCompatTest : DynaTest({
         r.isHtmlContentAllowed = true
         r.setItemDescriptionGenerator { it }
         expectList(
-            "HtmlSpan[]",
-            "HtmlSpan[]",
-            "HtmlSpan[]"
+            "HtmlSpan[@title='<strong>strong</strong>', innerHTML='<strong>strong</strong>']",
+            "HtmlSpan[@title='<i>italics</i>', innerHTML='<i>italics</i>']",
+            "HtmlSpan[@title='<u>underline</u>', innerHTML='<u>underline</u>']"
         ) { r.getItemLabels() }
     }
 })
