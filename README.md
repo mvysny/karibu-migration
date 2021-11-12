@@ -164,7 +164,8 @@ to replace label by `Div` or `Span`.
     to your WAR archive, to the `/META-INF/VAADIN/webapp/VAADIN/static/themes/my-theme/img/foo.png` folder
     and will serve the images from there.
   * Alternatively you can place the images
-    into the static resource folder (usually `src/main/webapp`) then refer to the image via `new Image("img/foo.png")`.
+    into the static resource folder (usually `src/main/webapp`; the image would then go to `src/main/webapp/img/foo.png`)
+    then refer to the image via `new Image("img/foo.png")`.
     See the [Resource cheat sheet](https://vaadin.com/docs/v14/flow/importing-dependencies/tutorial-ways-of-importing#resource-cheat-sheet)
     for more info.
   * Make sure to refer to the images as `new Image("img/foo.png")` and not `new Image("/img/foo.png")`
