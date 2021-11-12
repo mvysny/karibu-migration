@@ -46,7 +46,7 @@ Usually, the upgrade is done one of the following ways:
 
 In all cases, the application needs to be converted manually, view-by-view, to Vaadin 14.
 
-# List of functions
+# Component-related replacements
 
 ## Component and generic
 
@@ -152,6 +152,24 @@ API replacements:
 to replace label by `Div` or `Span`.
 
 * `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
+
+# Resources
+
+* `ClassResource` - replace with [StreamResource](https://vaadin.com/docs/v14/flow/advanced/tutorial-dynamic-content/#using-streamresource)
+* `ThemeResource` - You have two options:
+  * you can store the image into the theme folder; then you can refer to the image from a CSS file as per
+    [Creating a custom theme/Other Assets](https://vaadin.com/docs/v14/flow/styling/custom-theme/#other-theme-assets).
+    You can also refer to the image via `new Image("themes/my-theme/img/foo.png", "foo")`
+    if you store the image to `/frontend/themes/my-theme/img/foo.png` - Vaadin will copy the static resources
+    to your WAR archive, to the `/META-INF/VAADIN/webapp/VAADIN/static/themes/my-theme/img/foo.png` folder
+    and will serve the images from there.
+  * Alternatively you can place the images
+    into the static resource folder (usually `src/main/webapp`) then refer to the image via `new Image("img/foo.png")`.
+    See the [Resource cheat sheet](https://vaadin.com/docs/v14/flow/importing-dependencies/tutorial-ways-of-importing#resource-cheat-sheet)
+    for more info.
+  * Make sure to refer to the images as `new Image("img/foo.png")` and not `new Image("/img/foo.png")`
+    nor `new Image("./img/foo.png")` - the first one would not work with a non-empty context root
+    while the latter one will stop working for nested routes such as `@Route("my/nested/route")`.
 
 # Further ideas
 
