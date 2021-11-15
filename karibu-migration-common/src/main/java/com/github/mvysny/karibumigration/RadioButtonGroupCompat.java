@@ -5,6 +5,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ItemLabelGenerator;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
+import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.TextRenderer;
 import com.vaadin.flow.function.SerializableFunction;
@@ -12,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 /**
@@ -27,6 +29,7 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
     private boolean htmlContentAllowed = false;
 
     public RadioButtonGroupCompat() {
+        this(Collections.emptyList());
     }
 
     /**
@@ -43,6 +46,8 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
     public RadioButtonGroupCompat(@NotNull Collection<T> items) {
         // In Vaadin 14, RadioButtonGroup doesn't support a caption.
         setItems(items);
+        // In Vaadin 8, the RadioButtonGroup is vertical by default
+        setVertical(true);
     }
 
     @Deprecated
@@ -93,5 +98,17 @@ public class RadioButtonGroupCompat<T> extends RadioButtonGroup<T> {
     @Nullable
     public ItemLabelGenerator<T> getItemDescriptionGenerator() {
         return tooltipGenerator;
+    }
+
+    public void setVertical(boolean vertical) {
+        if (vertical) {
+            addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
+        } else {
+            removeThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
+        }
+    }
+
+    public boolean isVertical() {
+        return getThemeNames().contains(RadioGroupVariant.LUMO_VERTICAL.getVariantName());
     }
 }

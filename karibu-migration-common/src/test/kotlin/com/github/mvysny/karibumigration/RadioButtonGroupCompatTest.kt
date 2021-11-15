@@ -3,6 +3,8 @@ package com.github.mvysny.karibumigration
 import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.dynatest.expectList
 import com.github.mvysny.kaributesting.v10.getItemLabels
+import com.vaadin.flow.component.radiobutton.RadioGroupVariant
+import kotlin.test.expect
 
 class RadioButtonGroupCompatTest : DynaTest({
     test("smoke") {
@@ -67,5 +69,20 @@ class RadioButtonGroupCompatTest : DynaTest({
             "HtmlSpan[@title='<i>italics</i>', innerHTML='<i>italics</i>']",
             "HtmlSpan[@title='<u>underline</u>', innerHTML='<u>underline</u>']"
         ) { r.getItemLabels() }
+    }
+    group("vertical") {
+        test("true by default") {
+            expect(true) { RadioButtonGroupCompat<String>().isVertical }
+            expect(true) { RadioButtonGroupCompat<String>(listOf("a")).isVertical }
+        }
+        test("setting the value") {
+            val r = RadioButtonGroupCompat<String>()
+            r.isVertical = false
+            expect(false) { r.isVertical }
+            expect(false) { r.themeNames.contains(RadioGroupVariant.LUMO_VERTICAL.variantName )}
+            r.isVertical = true
+            expect(true) { r.isVertical }
+            expect(true) { r.themeNames.contains(RadioGroupVariant.LUMO_VERTICAL.variantName )}
+        }
     }
 })
