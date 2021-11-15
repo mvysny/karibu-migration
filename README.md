@@ -113,6 +113,7 @@ There is the `RadioButtonGroupCompat` class which introduces a better Vaadin 8 c
 
 * `setItemDescriptionGenerator()`
 * `setHtmlContentAllowed()`
+* It is vertical by default; also adds `setVertical(boolean)` utility setter.
 
 ## Grid
 
