@@ -157,6 +157,11 @@ to replace label by `Div` or `Span`.
 
 * `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
 
+## CustomField
+
+Vaadin 8's `CustomField` sets its width to 100% by default while Vaadin 10+'s `CustomField` wraps its children by default.
+Make sure to have your `CustomField` implement `HasSize` and call `this.setWidthFull()`.
+
 # Resources
 
 * `ClassResource` - replace with [StreamResource](https://vaadin.com/docs/v14/flow/advanced/tutorial-dynamic-content/#using-streamresource)
