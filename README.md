@@ -55,6 +55,7 @@ In all cases, the application needs to be converted manually, view-by-view, to V
 * `Component.setCaption()` is replaced by `Component.setLabel()` from karibu-tools.
    * Warning: in order for the caption to be visible, the component must be nested in `VerticalLayout`/`HorizontalLayout`/`FlexLayout`.
    * Alternatively, wrap the component in the `LabelWrapper` component decorator from karibu-tools which adds label to any component.
+   * See more at [Vaadin 8->14 Counterparts blogpost](https://mvysny.github.io/vaadin-8-14-api-counterparts/)
 * `Component.getCaption()` is replaced by `Component.getLabel()` from karibu-tools. 
 * `CssLayout` is replaced by a `Div`
 * `Component.setDescription()` is replaced by `Component.setTooltip()` from karibu-tools, which
@@ -76,7 +77,7 @@ It is discouraged to have a custom UI class. If this is necessary, it's better t
 create a separate utility class and store it into the UI instance via `ComponentUtil.setData(UI.getCurrent(), Util.class, util)`.
 Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread/18184719/how-to-correctly-extend-a-ui).
 
-* `UI.getUiRootPath()` - replaced with `VaadinRequest.getCurrent().getContextPath()`
+* `UI.getUiRootPath()` - prints the context root with the leading slash, e.g. `/Gradle___karibu_helloworld_application_war` and so it’s perfect for creating navigational links. Replaced with `VaadinRequest.getCurrent().getContextPath()`.
 
 ## ComboBox
 
