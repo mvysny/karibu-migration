@@ -180,6 +180,7 @@ to replace label by `Div` or `Span`.
 
 * Add extension functions for Groovy
 * Add extension functions for Lombok
+* Document all Vaadin 8 components in this README. Please create PRs to create a definitive migration guide here 👍
 
 # License
 
