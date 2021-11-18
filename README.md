@@ -98,6 +98,8 @@ Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread
 ## NativeSelect -> Select
 
 * `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()`
+* `setTextInputAllowed()` - no replacement. Select never allows text input. Use `ComboBox` instead
+  if you want to enable text input.
 
 ## CheckBoxGroup
 
