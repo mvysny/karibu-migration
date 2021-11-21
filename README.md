@@ -53,6 +53,8 @@ That is possible with Vaadin 14 as well, but there are very important distinctio
 
 * Many of the components styles are now applied via theme variants. For example, the `ValoTheme.COMBOBOX_SMALL` is now
   applied via `addThemeVariants(ComboBoxVariant.Small)`; adding the `ValoTheme.COMBOBOX_SMALL` via `addClassName()` would have no effect.
+  * To see available theme variants for particular components, find the component at the [Vaadin Components](https://vaadin.com/components)
+    page, then go to the "Examples" / "Theme Variants" tab.
 * It's not possible to style component internals via a global CSS because of Web component mechanism called the Shadow DOM. Read more at
   [Vaadin official documentation on Style Scopes](https://vaadin.com/docs/v14/flow/styling/style-scopes).
 * Other than that, you can still use the global styles if needed. You can't use SCSS though (well you can but then you have to figure out
