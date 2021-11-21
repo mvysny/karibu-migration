@@ -46,6 +46,30 @@ Usually, the upgrade is done one of the following ways:
 
 In all cases, the application needs to be converted manually, view-by-view, to Vaadin 14.
 
+## Styles
+
+Vaadin 8 apps and components were styled by adding rules to the global SCSS file, then adding styles to individual components.
+That is possible with Vaadin 14 as well, but there are very important distinctions:
+
+* Many of the components styles are now applied via theme variants. For example, the `ValoTheme.COMBOBOX_SMALL` is now
+  applied via `addThemeVariants(ComboBoxVariant.Small)`; adding the `ValoTheme.COMBOBOX_SMALL` via `addClassName()` would have no effect.
+* It's not possible to style component internals via a global CSS because of Web component mechanism called the Shadow DOM. Read more at
+  [Vaadin official documentation on Style Scopes](https://vaadin.com/docs/v14/flow/styling/style-scopes).
+* Other than that, you can still use the global styles if needed. You can't use SCSS though (well you can but then you have to figure out
+  how to compile SCSS yourself - there's no direct support for SCSS in Vaadin 14+ anymore), and you have to apply classes via `addClassName()`
+  instead of `addStyleName()`.
+
+I really urge you to read the [Styling and Themes](https://vaadin.com/docs/v14/flow/styling/overview) chapter, to familiarize yourself
+with the new concepts.
+
+### Lumo VS Valo
+
+Vaadin 8's Valo theme has been replaced by Vaadin 14's Lumo theme. Theme parametrization is done via CSS Variables rather than the SCSS mechanism.
+Find more information here:
+
+* The [Lumo documentation](https://vaadin.com/docs/v14/flow/styling/lumo/overview) lists all variables
+* The [Lumo Editor](https://demo.vaadin.com/lumo-editor/) offers a great way to play with the variables and see the outcome in realtime.
+
 # Component-related replacements
 
 ## Component and generic
@@ -66,6 +90,7 @@ In all cases, the application needs to be converted manually, view-by-view, to V
   * `setStyleName()` replaced by `setClassName`; `addStyleName()` replaced by `addClassName()`;
      `removeStyleName()` replaced by `removeClassName()`
   * `addStyleName(ValoTheme.*)` is generally replaced by `addThemeVariants(XYZVariant.LUMO_*)`
+  * **IMPORTANT**: The styles mechanism has been redesigned completely; read the Styles chapter for more information.
 * Children:
   * `removeAllComponents()` - replace by `removeAll()`
   * `addComponent()` - replace by `add()`
