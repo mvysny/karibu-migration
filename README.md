@@ -121,6 +121,7 @@ Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread
 * Given that, replace `setEmptySelectionCaption()` with `setPlaceholder()`.
 * `setTextInputAllowed()` - no replacement. ComboBox always allows text input. Use `Select` instead
    if you want to disable text input.
+* `scrollToSelectedItem()` - no replacement as of today. Please open a feature request at [flow-components/issues](https://github.com/vaadin/flow-components).
 
 ## NativeSelect -> Select
 
