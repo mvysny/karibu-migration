@@ -85,7 +85,8 @@ Find more information here:
 * `Component.getCaption()` is replaced by `Component.getLabel()` from karibu-tools. 
 * `CssLayout` is replaced by a `Div`
 * `Component.setDescription()` is replaced by `Component.setTooltip()` from karibu-tools, which
-    sets the `tooltip` DOM attribute.
+    sets the `tooltip` DOM attribute. However this doesn't support tooltips with HTML;
+    you can alternatively use [vcf-tooltip](https://github.com/vaadin-component-factory/vcf-tooltip).
 * `Component.getDescription()` is replaced by `Component.getTooltip()` from karibu-tools, which
     reads the `tooltip` DOM attribute.
 * Styles:
