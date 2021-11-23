@@ -140,7 +140,7 @@ Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread
 * RadioButtonGroup is horizontal by default; use `addThemeVariants(RadioGroupVariant.LUMO_VERTICAL)`
   to lay out buttons horizontally in absence of `ValoTheme.OPTIONGROUP_HORIZONTAL`.
 
-There is the `RadioButtonGroupCompat` class which introduces a better Vaadin 8 compatibility:
+This project provides the `RadioButtonGroupCompat` class which introduces a better Vaadin 8 compatibility:
 
 * `setItemDescriptionGenerator()`
 * `setHtmlContentAllowed()`
