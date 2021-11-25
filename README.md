@@ -147,6 +147,11 @@ This project provides the `RadioButtonGroupCompat` class which introduces a bett
 * `setHtmlContentAllowed()`
 * It is vertical by default; also adds `setVertical(boolean)` utility setter.
 
+### Individual RadioButton
+
+It's not possible to have a single RadioButton just as it's not possible with Vaadin 8. See+vote for [issue 1952](https://github.com/vaadin/flow-components/issues/1952).
+Workaround is to have a RadioButtonGroup with just one item.
+
 ## Grid
 
 Grid:
