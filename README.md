@@ -198,6 +198,14 @@ to replace label by `Div` or `Span`.
 Vaadin 8's `CustomField` sets its width to 100% by default while Vaadin 10+'s `CustomField` wraps its children by default.
 Make sure to have your `CustomField` implement `HasSize` and call `this.setWidthFull()`.
 
+## TabSheet
+
+Not available directly. You can either build your own component, or try to use:
+
+* `TabSheet` from [karibu-dsl](https://github.com/mvysny/karibu-dsl) (a direct replacement)
+* [paged-tabs](https://vaadin.com/directory/component/paged-tabs) Vaadin Directory extension
+  - kinda works but the API is not that rich compared to Vaadin 8's TabSheet.
+
 # Resources
 
 * `ClassResource` - replace with [StreamResource](https://vaadin.com/docs/v14/flow/advanced/tutorial-dynamic-content/#using-streamresource)
