@@ -19,6 +19,14 @@ public class NativeSelect<T> extends Select<T> {
     }
 
     /**
+     * Constructor from super.
+     * @param items the items for the select
+     */
+    public NativeSelect(T... items) {
+        super(items);
+    }
+
+    /**
      * Creates a new {@code NativeSelect} with the given caption and no items.
      *
      * @param caption
