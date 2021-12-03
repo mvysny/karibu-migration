@@ -32,3 +32,6 @@ public fun ComboBox<*>.setTextInputAllowed(allowed: Boolean) {
         throw RuntimeException("Cannot disable text input on ComboBox, you have to use Select instead")
     }
 }
+
+@Deprecated("Cannot disable text input on ComboBox, you have to use Select instead")
+public fun ComboBox<*>.isTextInputAllowed(): Boolean = true

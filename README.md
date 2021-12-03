@@ -127,8 +127,9 @@ Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread
 ## NativeSelect -> Select
 
 * `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()`
-* `setTextInputAllowed()` - no replacement. Select never allows text input. Use `ComboBox` instead
-  if you want to enable text input.
+
+There's also `NativeSelect` Vaadin 14 component for your convenience, which simply
+extends Vaadin 14's Select but provides all constructors from Vaadin 8's `NativeSelect`.
 
 ## CheckBoxGroup
 
