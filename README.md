@@ -219,7 +219,8 @@ Make sure to have your `CustomField` implement `HasSize` and call `this.setWidth
 
 ## TabSheet
 
-Not available directly. You can either build your own component, or try to use:
+Not available directly. You can either build your own component out of Vaadin 14 `Tabs`+`Tab`
+(but that's just the tab header area), or try to use:
 
 * `TabSheet` from [karibu-dsl](https://github.com/mvysny/karibu-dsl) (a direct replacement)
 * [paged-tabs](https://vaadin.com/directory/component/paged-tabs) Vaadin Directory extension
