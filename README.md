@@ -187,6 +187,8 @@ API replacements:
 * `setExpandRatio()`: replace with either `expand()` (if the expand ratio is 1) or `setFlexGrow()`
 * `addComponentsAndExpand()`: replace with `addAndExpand()`
 
+A compatibility replacement components are coming, as a Vaadin Pro feature (TBA).
+
 ## Label
 
 `Label` is no longer a `Div` but an actual `<label>` element. Usually the best approach is
