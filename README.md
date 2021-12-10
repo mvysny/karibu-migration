@@ -195,6 +195,7 @@ A compatibility replacement components are coming, as a Vaadin Pro feature (TBA)
 to replace label by `Div` or `Span`.
 
 * `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
+* `Label` with `ValoTheme.LABEL_H1` is replaced by `new H1()`; similar for `H2`/`H3`/`H4`/`H5`/`H6`
 
 ## CustomField
 
