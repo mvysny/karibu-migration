@@ -207,6 +207,11 @@ Not available directly. You can either build your own component, or try to use:
 * [paged-tabs](https://vaadin.com/directory/component/paged-tabs) Vaadin Directory extension
   - kinda works but the API is not that rich compared to Vaadin 8's TabSheet.
 
+## VerticalSplitPanel / HorizontalSplitPanel
+
+Use the `VerticalSplitPanel` and `HorizontalSplitPanel` classes extending the Vaadin 14 `SplitLayout`
+providing the old Vaadin 8 API.
+
 # Resources
 
 * `ClassResource` - replace with [StreamResource](https://vaadin.com/docs/v14/flow/advanced/tutorial-dynamic-content/#using-streamresource)
