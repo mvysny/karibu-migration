@@ -71,6 +71,9 @@ Find more information here:
 
 * The [Lumo documentation](https://vaadin.com/docs/v14/flow/styling/lumo/overview) lists all variables
 * The [Lumo Editor](https://demo.vaadin.com/lumo-editor/) offers a great way to play with the variables and see the outcome in realtime.
+* See [Vaadin 8 Sampler](https://demo.vaadin.com/sampler/) for the way how Vaadin 8 components looked like with Valo theme
+* For a complete list of Vaadin 8 components, along with all ValoTheme variants, see the "UITest" project at
+  [karibu-dsl](https://github.com/mvysny/karibu-dsl) page.
 
 # Component-related replacements
 
@@ -195,7 +198,12 @@ A compatibility replacement components are coming, as a Vaadin Pro feature (TBA)
 to replace label by `Div` or `Span`.
 
 * `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
-* `Label` with `ValoTheme.LABEL_H1` is replaced by `new H1()`; similar for `H2`/`H3`/`H4`/`H5`/`H6`
+* `Label` with `ValoTheme.LABEL_H1` is replaced by `new H1()`; similar for `H2`/`H3`/`H4`/`H5`/`H6`.
+* `ValoTheme.LABEL_HUGE`, `ValoTheme.LABEL_LARGE`, `ValoTheme.LABEL_SMALL`, `ValoTheme.LABEL_TINY` - no replacements.
+* `ValoTheme.LABEL_BOLD` -> replace with `getStyle().set("font-weight", "500")`
+* `ValoTheme.LABEL_LIGHT` -> used to set lighter text color and a font weight of 200, no replacement.
+* `ValoTheme.LABEL_COLORED` -> sets a blue text color `#197de1`, no replacement.
+* `ValoTheme.LABEL_SUCCESS`/`LABEL_FAILURE` used a green/red text color and a border, no replacement.
 
 ## CustomField
 
