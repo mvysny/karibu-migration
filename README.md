@@ -210,7 +210,8 @@ Not available directly. You can either build your own component, or try to use:
 ## VerticalSplitPanel / HorizontalSplitPanel
 
 Use the `VerticalSplitPanel` and `HorizontalSplitPanel` classes extending the Vaadin 14 `SplitLayout`
-providing the old Vaadin 8 API.
+providing the old Vaadin 8 API. Note that only `Unit.PERCENTAGE` is supported -
+trying to use `Unit.PX` will fail with an exception.
 
 # Resources
 
