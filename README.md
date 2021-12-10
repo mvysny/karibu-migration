@@ -171,9 +171,15 @@ Grid.Column:
 
 * `Column.setDescriptionGenerator()` - no replacement. See [issue #2315](https://github.com/vaadin/flow-components/issues/2315)
 * `Column.setExpandRatio()` - replace with `setFlexGrow()`
+* `Column.getExpandRatio()` - replace with `getFlexGrow()`
 * `Column.setCaption()` - replace with `setHeader()`
+* `Column.getCaption()` - no replacement, see [issue #1496](https://github.com/vaadin/flow-components/issues/1496)
 * *NOTE*: Grid.Column now expands by default; if you want to set it to a fixed width
    then you have to call `setWidth("50px").setFlexGrow(0)`.
+* `Column.setHidden()` - replace with `setVisible()`
+* `Column.isHidden()` - replace with `isVisible()`
+* `Column.setHidable()` - No replacement as of now; [issue #1603](see+vote for https://github.com/vaadin/flow-components/issues/1603)
+* `Column.isHidable()` - no replacement as of now
 
 ## FlexComponent/HorizontalLayout/VerticalLayout
 

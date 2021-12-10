@@ -16,9 +16,15 @@ public fun <T> Grid.Column<T>.setDescriptionGenerator(generator: (T) -> String):
 public fun <T> Grid.Column<T>.setExpandRatio(ratio: Int): Grid.Column<T> =
     setFlexGrow(ratio)
 
+@Deprecated("Use getFlexGrow()", replaceWith = ReplaceWith("setFlexGrow(ratio)"))
+public fun <T> Grid.Column<T>.getExpandRatio(): Int = flexGrow
+
 @Deprecated("Use setHeader()", replaceWith = ReplaceWith("setHeader(caption)"))
 public fun <T> Grid.Column<T>.setCaption(caption: String): Grid.Column<T> =
     setHeader(caption)
+
+@Deprecated("no replacement, see+vote for https://github.com/vaadin/flow-components/issues/1496")
+public fun <T> Grid.Column<T>.getCaption(caption: String): Grid.Column<T> = throw UnsupportedOperationException("unimplemented")
 
 @Deprecated("No replacement as of now")
 public fun <T> Grid<T>.addFooterRowAt(index: Int): FooterRow {
@@ -35,3 +41,21 @@ public fun <T> Grid<T>.addFooterRowAt(index: Int): FooterRow {
 public fun Grid<*>.getFooterRowCount(): Int = footerRows.size
 @Deprecated("getHeaderRows().size()")
 public fun Grid<*>.getHeaderRowCount(): Int = headerRows.size
+
+@Deprecated("No replacement as of now; see+vote for https://github.com/vaadin/flow-components/issues/1603")
+public fun <T> Grid.Column<T>.setHidable(hidable: Boolean): Grid.Column<T> {
+    // do nothing
+    return this
+}
+
+@Deprecated("No replacement as of now; see+vote for https://github.com/vaadin/flow-components/issues/1603")
+public fun <T> Grid.Column<T>.isHidable(hidable: Boolean): Boolean = false
+
+@Deprecated("use setVisible()")
+public fun <T> Grid.Column<T>.setHidden(hidden: Boolean): Grid.Column<T> {
+    isVisible = !hidden
+    return this
+}
+
+@Deprecated("use isVisible()")
+public fun <T> Grid.Column<T>.isHidden(): Boolean = !isVisible
