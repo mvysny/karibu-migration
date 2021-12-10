@@ -204,6 +204,7 @@ to replace label by `Div` or `Span`.
 * `ValoTheme.LABEL_LIGHT` -> used to set lighter text color and a font weight of 200, no replacement.
 * `ValoTheme.LABEL_COLORED` -> sets a blue text color `#197de1`, no replacement.
 * `ValoTheme.LABEL_SUCCESS`/`LABEL_FAILURE` used a green/red text color and a border, no replacement.
+* `ValoTheme.LABEL_SPINNER` -> use an indeterminate [Progress Bar](https://vaadin.com/docs/latest/ds/components/progress-bar).
 
 ## CustomField
 
