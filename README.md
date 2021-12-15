@@ -198,6 +198,12 @@ API replacements:
 
 A compatibility replacement components are coming, as a Vaadin Pro feature (TBA).
 
+## GridLayout
+
+Please see the `GridLayout` class providing Vaadin 8 API. Note that the new GridLayout
+doesn't use slots and therefore uses different layouting engine. It's merely provided
+as a best-effort.
+
 ## Label
 
 `Label` is no longer a `Div` but an actual `<label>` element. Usually the best approach is
