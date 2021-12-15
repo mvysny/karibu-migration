@@ -54,14 +54,10 @@ public class GridLayout extends FlexLayout {
      * Constructs a GridLayout of given size (number of columns and rows) and
      * adds the given components in order to the grid.
      *
+     * @param columns  Number of columns in the grid.
+     * @param rows     ignored
+     * @param children Components to add to the grid.
      * @see #add(Component...)
-     *
-     * @param columns
-     *            Number of columns in the grid.
-     * @param rows
-     *            ignored
-     * @param children
-     *            Components to add to the grid.
      * @deprecated use {@link #GridLayout(int, Component...)}.
      */
     public GridLayout(int columns, int rows, Component... children) {
@@ -102,23 +98,7 @@ public class GridLayout extends FlexLayout {
 
     @Override
     public void setAlignItems(@Nullable FlexComponent.Alignment alignment) {
-        getChildren().forEach(c -> {
-            String align = c.getElement().getStyle().get("align-self");
-
-            Alignment alignEnum = null;
-            if (align != null) {
-                try {
-                    Method method = Alignment.class.getDeclaredMethod("toAlignment", String.class, Alignment.class);
-                    method.setAccessible(true);
-                    alignEnum = (Alignment) method.invoke(null, align, null);
-                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if (alignEnum == null || alignEnum != alignment) {
-                setAlignSelf(alignment, c);
-            }
-        });
+        getChildren().forEach(c -> setAlignSelf(alignment, c));
         this.alignment = alignment;
     }
 
@@ -131,32 +111,23 @@ public class GridLayout extends FlexLayout {
     @Override
     public void setJustifyContentMode(@Nullable JustifyContentMode justifyContentMode) {
         getChildren().forEach(c -> {
-            String justify = c.getElement().getStyle().get("justify-self");
-
-            JustifyContentMode justifyEnum = null;
-            if (justify != null) {
-                try {
-                    Method method = JustifyContentMode.class.getDeclaredMethod("toJustifyContentMode", String.class, JustifyContentMode.class);
-                    method.setAccessible(true);
-                    justifyEnum = (JustifyContentMode) method.invoke(null, justify, null);
-                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
-            }
             if (justifyContentMode == null) {
                 c.getElement().getStyle().remove("justify-self");
-            }
-            if (justifyEnum == null || justifyEnum != justifyContentMode) {
-                try {
-                    Method method = JustifyContentMode.class.getDeclaredMethod("getFlexValue");
-                    method.setAccessible(true);
-                    c.getElement().getStyle().set("justify-self", justifyContentMode == null ? null : method.invoke(justifyContentMode).toString());
-                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
+            } else {
+                c.getElement().getStyle().set("justify-self", getFlexValue(justifyContentMode));
             }
         });
         this.justifyContentMode = justifyContentMode;
+    }
+
+    private static String getFlexValue(@Nullable JustifyContentMode justifyContentMode) {
+        try {
+            Method method = JustifyContentMode.class.getDeclaredMethod("getFlexValue");
+            method.setAccessible(true);
+            return justifyContentMode == null ? null : method.invoke(justifyContentMode).toString();
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -240,20 +211,15 @@ public class GridLayout extends FlexLayout {
      * in the grid, the operation will succeed - no exceptions are thrown.
      * </p>
      *
-     * @param component
-     *            the component to be added, not <code>null</code>.
-     * @param column1
-     *            the column of the upper left corner of the area <code>component</code>
-     *            is supposed to occupy. The leftmost column has index 0.
-     * @param row1
-     *            the row of the upper left corner of the area <code>c</code> is
-     *            supposed to occupy. The topmost row has index 0.
-     * @param column2
-     *            the column of the lower right corner of the area
-     *            <code>component</code> is supposed to occupy.
-     * @param row2
-     *            the row of the lower right corner of the area <code>c</code>
-     *            is supposed to occupy.
+     * @param component the component to be added, not <code>null</code>.
+     * @param column1   the column of the upper left corner of the area <code>component</code>
+     *                  is supposed to occupy. The leftmost column has index 0.
+     * @param row1      the row of the upper left corner of the area <code>c</code> is
+     *                  supposed to occupy. The topmost row has index 0.
+     * @param column2   the column of the lower right corner of the area
+     *                  <code>component</code> is supposed to occupy.
+     * @param row2      the row of the lower right corner of the area <code>c</code>
+     *                  is supposed to occupy.
      */
     public void addComponent(@NotNull Component component, int column1, int row1,
                              int column2, int row2) {
@@ -271,5 +237,26 @@ public class GridLayout extends FlexLayout {
         startRow(component, row1);
         spanColumns(component, spanColumns);
         spanRows(component, spanRows);
+    }
+
+    /**
+     * Adds the component to the grid in cells column1,row1 (NortWest corner of
+     * the area.) End coordinates (SouthEast corner of the area) are the same as
+     * column1,row1. The coordinates are zero-based. Component width and height
+     * is 1.
+     *
+     * @param component
+     *            the component to be added, not <code>null</code>.
+     * @param column
+     *            the column index, starting from 0.
+     * @param row
+     *            the row index, starting from 0.
+     */
+    public void addComponent(Component component, int column, int row) {
+        addComponent(component, column, row, column, row);
+    }
+
+    public void removeComponent(Component component) {
+        remove(component);
     }
 }
