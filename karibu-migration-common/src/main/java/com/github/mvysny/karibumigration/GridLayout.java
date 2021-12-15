@@ -252,11 +252,13 @@ public class GridLayout extends FlexLayout {
      * @param row
      *            the row index, starting from 0.
      */
-    public void addComponent(Component component, int column, int row) {
+    public void addComponent(@NotNull Component component, int column, int row) {
         addComponent(component, column, row, column, row);
     }
 
-    public void removeComponent(Component component) {
-        remove(component);
+    public void removeComponent(@Nullable Component component) {
+        if (component != null) {
+            remove(component);
+        }
     }
 }
