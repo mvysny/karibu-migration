@@ -14,7 +14,7 @@ import java.util.Collection;
 public class NativeSelect<T> extends Select<T> {
     /**
      * Creates a new {@code NativeSelect} with an empty caption and no items.
-     *
+     * <p></p>
      * Primary constructor: all other constructors ultimately delegate to this one.
      */
     public NativeSelect() {
