@@ -18,11 +18,22 @@ repositories {
   mavenCentral()
 }
 dependencies {
-  api("com.github.mvysny.karibu-migration:karibu-migration:x.y")
+  api("com.github.mvysny.karibu-migration:karibu-migration-MODULE:x.y")
 }
 ```
 
 See the tag above for the latest version.
+
+There are two modules available:
+
+* The `karibu-migration-common` module doesn't depend on Kotlin and brings in a set of
+  compatibility-helping components: `GridLayout`, `HorizontalSplitPanel`,
+  `NativeSelect`, `RadioButtonGroupCompat`, `SplitLayoutCompat` and `VerticalSplitPanel`.
+* The `karibu-migration-kotlin` builds on `karibu-migration-common` and adds lots
+  of useful Kotlin extension methods to Vaadin 14+ components which emulate Vaadin 8 API.
+  If you ever wanted to convert your Vaadin 8 project to Kotlin and clean it up,
+  it's smart to do that *before* the migration - you'll gain access to these
+  extension methods, and you will not have to convert obsolete crap code.
 
 # Migration Documentation
 
@@ -180,6 +191,12 @@ Grid.Column:
 * `Column.isHidden()` - replace with `isVisible()`
 * `Column.setHidable()` - No replacement as of now; [issue #1603](see+vote for https://github.com/vaadin/flow-components/issues/1603)
 * `Column.isHidable()` - no replacement as of now
+
+## GridContextMenu
+
+* The `addContextMenuOpenListener()` has been replaced by `addGridContextMenuOpenedListener()`.
+  **WARNING**: weird bugs will happen if you try to dynamically populate menu contents from this listener -
+  see [grid #575](https://github.com/vaadin/vaadin-grid-flow/issues/575). Make sure to use `setDynamicContentHandler()` instead.
 
 ## FlexComponent/HorizontalLayout/VerticalLayout
 

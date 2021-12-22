@@ -1,7 +1,9 @@
 package com.github.mvysny.karibumigration
 
+import com.vaadin.flow.component.ComponentEventListener
 import com.vaadin.flow.component.grid.FooterRow
 import com.vaadin.flow.component.grid.Grid
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu
 
 /**
  * No available replacement, see https://github.com/vaadin/flow-components/issues/2315
@@ -59,3 +61,7 @@ public fun <T> Grid.Column<T>.setHidden(hidden: Boolean): Grid.Column<T> {
 
 @Deprecated("use isVisible()")
 public fun <T> Grid.Column<T>.isHidden(): Boolean = !isVisible
+
+@Deprecated("Beware: weird bugs will happen if you try to dynamically populate menu contents from this listener. Manually replace with either addContextMenuOpenedListener() or setDynamicContentHandler(). See README for more details.", level = DeprecationLevel.ERROR)
+public fun <T> GridContextMenu<T>.addContextMenuOpenListener(listener: ComponentEventListener<GridContextMenu.GridContextMenuOpenedEvent<T>>) {
+}
