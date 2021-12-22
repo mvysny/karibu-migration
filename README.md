@@ -189,7 +189,7 @@ Grid.Column:
    then you have to call `setWidth("50px").setFlexGrow(0)`.
 * `Column.setHidden()` - replace with `setVisible()`
 * `Column.isHidden()` - replace with `isVisible()`
-* `Column.setHidable()` - No replacement as of now; [issue #1603](see+vote for https://github.com/vaadin/flow-components/issues/1603)
+* `Column.setHidable()` - No replacement as of now; see+vote for [issue #1603](https://github.com/vaadin/flow-components/issues/1603)
 * `Column.isHidable()` - no replacement as of now
 
 ## GridContextMenu
