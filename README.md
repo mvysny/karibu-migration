@@ -138,6 +138,9 @@ Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread
    if you want to disable text input.
 * `scrollToSelectedItem()` - no replacement as of today. Please open a feature request at [flow-components/issues](https://github.com/vaadin/flow-components).
 
+Also take a look at the [ComboBox with Vaadin 8 behavior](https://vaadin.com/directory/component/combo-box-with-vaadin-8-behavior/overview)
+which closely mimics Vaadin 8 ComboBox.
+
 ## NativeSelect -> Select
 
 * `setItemCaptionGenerator()` is replaced by `setItemLabelGenerator()`
@@ -220,6 +223,10 @@ A compatibility replacement components are coming, as a Vaadin Pro feature (TBA)
 Please see the `GridLayout` class providing Vaadin 8 API. Note that the new GridLayout
 doesn't use slots and therefore uses different layouting engine. It's merely provided
 as a best-effort.
+
+Alternatively see the [GridLayout from Vaadin Directory](https://vaadin.com/directory/component/gridlayout) -
+it supports slots (which means positioning of children within allotted cells) but
+no expand ratios at the moment.
 
 ## Label
 
