@@ -153,7 +153,7 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
     public Tab findTabWithContents(@NotNull Component contents) {
         Objects.requireNonNull(contents);
         return tabsToContents.entrySet().stream()
-                .filter(it -> it.getValue().equals(contents))
+                .filter(it -> contents.equals(it.getValue()))
                 .map(it -> it.getKey())
                 .findAny()
                 .orElse(null);
@@ -242,12 +242,12 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
     }
 
     @Nullable
-    private Component getSelectedTabContent() {
+    public Component getSelectedTabContents() {
         return tabsContainer.getChildren().findFirst().orElse(null);
     }
 
     private void update() {
-        final Component currentTabContent = getSelectedTabContent();
+        final Component currentTabContent = getSelectedTabContents();
         final Tab selectedTab1 = getSelectedTab();
 
         Component newTabContent;
@@ -284,7 +284,7 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
     }
 
     /**
-     * A live list of all tabs. The list is read-only but live: it reflects changes when tabs are added or removed.
+     * A live list of all tabs. The list is immutable but live: it reflects changes when tabs are added or removed.
      */
     @NotNull
     private final List<Tab> tabs = new AbstractList<Tab>() {
@@ -300,7 +300,7 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
     };
 
     /**
-     * Returns a live list of all tabs. The list is read-only but live: it reflects changes when tabs are added or removed.
+     * Returns a live list of all tabs. The list is immutable but live: it reflects changes when tabs are added or removed.
      */
     @NotNull
     public List<Tab> getTabs() {
@@ -310,5 +310,10 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
     @NotNull
     public Registration addSelectedChangeListener(@NotNull ComponentEventListener<Tabs.SelectedChangeEvent> listener) {
         return tabsComponent.addSelectedChangeListener(listener);
+    }
+
+    public int indexOf(@NotNull Tab tab) {
+        Objects.requireNonNull(tab);
+        return tabsComponent.indexOf(tab);
     }
 }
