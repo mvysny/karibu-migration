@@ -1,6 +1,5 @@
 package com.github.mvysny.karibumigration;
 
-import com.github.mvysny.kaributools.HtmlSpan;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ItemLabelGenerator;
 import com.vaadin.flow.component.html.Span;

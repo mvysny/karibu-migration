@@ -1,5 +1,4 @@
 dependencies {
-    api("com.github.mvysny.karibu-tools:karibu-tools:0.7")
     // Vaadin 14
     compileOnly("com.vaadin:vaadin-core:${properties["vaadin14_version"]}") {
         // Webjars are only needed when running in Vaadin 13 compatibility mode
@@ -12,6 +11,7 @@ dependencies {
     // IDEA language injections
     api("org.jetbrains:annotations:22.0.0")
 
+    testImplementation(kotlin("stdlib-jdk8"))
     testImplementation("com.vaadin:vaadin-core:${properties["vaadin14_version"]}") {
         // Webjars are only needed when running in Vaadin 13 compatibility mode
         listOf("com.vaadin.webjar", "org.webjars.bowergithub.insites",
