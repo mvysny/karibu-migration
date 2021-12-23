@@ -10,7 +10,7 @@ you can continue using the same Vaadin 8 functions and get useful information an
 For example,
 there is `setWidthUndefined()` function marked as deprecated (since it's no longer in Vaadin 14), redirecting to a `setWidth(null)` call.
 
-The jar is in Maven Central (TODO release), so it's easy to add this library to your project.
+The jar is in Maven Central, so it's easy to add this library to your project.
 
 Gradle:
 ```groovy
@@ -20,6 +20,15 @@ repositories {
 dependencies {
   api("com.github.mvysny.karibu-migration:karibu-migration-MODULE:x.y")
 }
+```
+
+Maven:
+```xml
+<dependency>
+    <groupId>com.github.mvysny.karibu-migration</groupId>
+    <artifactId>karibu-migration-MODULE</artifactId>
+    <version>x.y</version>
+</dependency>
 ```
 
 See the tag above for the latest version.
