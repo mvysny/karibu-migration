@@ -26,8 +26,8 @@ See the tag above for the latest version.
 
 There are two modules available:
 
-* The `karibu-migration-common` module doesn't depend on Kotlin and brings in a set of
-  compatibility-helping components: `GridLayout`, `HorizontalSplitPanel`,
+* The `karibu-migration-common` module is pure Java, doesn't depend on Kotlin and brings in a set of
+  compatibility-helping components: `GridLayout`, `HtmlSpan`, `HorizontalSplitPanel`,
   `NativeSelect`, `RadioButtonGroupCompat`, `SplitLayoutCompat` and `VerticalSplitPanel`.
 * The `karibu-migration-kotlin` builds on `karibu-migration-common` and adds lots
   of useful Kotlin extension methods to Vaadin 14+ components which emulate Vaadin 8 API.
@@ -234,7 +234,7 @@ no expand ratios at the moment.
 `Label` is no longer a `Div` but an actual `<label>` element. Usually the best approach is
 to replace label by `Div` or `Span`.
 
-* `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from karibu-tools
+* `new Label("", ContentMode.HTML)` is replaced by `new HtmlSpan()` from `common`
 * `Label` with `ValoTheme.LABEL_H1` is replaced by `new H1()`; similar for `H2`/`H3`/`H4`/`H5`/`H6`.
 * `ValoTheme.LABEL_HUGE`, `ValoTheme.LABEL_LARGE`, `ValoTheme.LABEL_SMALL`, `ValoTheme.LABEL_TINY` - no replacements.
 * `ValoTheme.LABEL_BOLD` -> replace with `getStyle().set("font-weight", "500")`
