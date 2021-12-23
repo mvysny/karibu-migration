@@ -114,6 +114,19 @@ class TabSheetTest : DynaTest({
             ts.addTab("bar", Span("it works 2!"))
             expect(0) { ts.selectedIndex }
         }
+        test("Selecting a tab will properly display it") {
+            val ts = TabSheet()
+            ts.addTab("foo", Span("it works!"))
+            ts.addTab("bar", Span("it works 2!"))
+            ts.selectedIndex = 1
+            expect(1) { ts.selectedIndex }
+            ts._expectOne<Span> { text = "it works 2!" }
+            ts._expectNone<Span> { text = "it works!" }
+            ts.selectedIndex = 0
+            expect(0) { ts.selectedIndex }
+            ts._expectNone<Span> { text = "it works 2!" }
+            ts._expectOne<Span> { text = "it works!" }
+        }
         test("Removing last tab clears selection") {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
@@ -130,6 +143,13 @@ class TabSheetTest : DynaTest({
             val ts = TabSheet()
             ts.addTab("foo")
             expect(0) { ts.selectedIndex }
+        }
+        test("Selecting no tab") {
+            val ts = TabSheet()
+            ts.addTab("foo", Span("it works!"))
+            ts.selectedIndex = -1
+            expect(-1) { ts.selectedIndex }
+            ts._expectNone<Span> { text = "it works!" }
         }
     }
 
@@ -169,6 +189,26 @@ class TabSheetTest : DynaTest({
             val ts = TabSheet()
             val tab = ts.addLazyTab("foo") { Span("it works!") }
             expect(tab) { ts.selectedTab }
+        }
+        test("Selecting a tab will properly display it") {
+            val ts = TabSheet()
+            val tab1 = ts.addTab("foo", Span("it works!"))
+            val tab2 = ts.addTab("bar", Span("it works 2!"))
+            ts.selectedTab = tab2
+            expect(tab2) { ts.selectedTab }
+            ts._expectOne<Span> { text = "it works 2!" }
+            ts._expectNone<Span> { text = "it works!" }
+            ts.selectedTab = tab1
+            expect(tab1) { ts.selectedTab }
+            ts._expectNone<Span> { text = "it works 2!" }
+            ts._expectOne<Span> { text = "it works!" }
+        }
+        test("Selecting no tab") {
+            val ts = TabSheet()
+            ts.addTab("foo", Span("it works!"))
+            ts.selectedTab = null
+            expect(null) { ts.selectedTab }
+            ts._expectNone<Span> { text = "it works!" }
         }
     }
 
