@@ -51,7 +51,8 @@ Usually, the upgrade is done one of the following ways:
   * Convert your app shell (the main route layout) to Vaadin 14, while nesting all Vaadin 8 views in Vaadin 14
     wrapper components.
   * Convert your views one-by-one to Vaadin 14.
-  * For Vaadin8+14 MPR demo project see [Vaadin 14 MPR + Vaadin 8 Gradle Demo Project](https://gitlab.com/mvysny/vaadin14-mpr-gradle-demo)
+  * For Vaadin8+14 MPR demo project see [Vaadin 14 MPR + Vaadin 8 Gradle Demo Project](https://gitlab.com/mvysny/vaadin14-mpr-gradle-demo);
+    Maven version [Tatu Lund's mpr-demo](https://github.com/TatuLund/mpr-demo).
 * Adding a secondary Vaadin 14 servlet on classpath, then running Vaadin 8 app alongside
    the new Vaadin 14 app.
 
