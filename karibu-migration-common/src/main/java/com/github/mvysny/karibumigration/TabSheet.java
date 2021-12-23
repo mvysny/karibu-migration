@@ -140,7 +140,6 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
      */
     public void setTabContents(@NotNull Tab tab, @Nullable Component newContents) {
         checkOurTab(tab);
-        Objects.requireNonNull(newContents);
         tabsToContents.put(tab, newContents);
         tabsToContentProvider.remove(tab);
         update();
