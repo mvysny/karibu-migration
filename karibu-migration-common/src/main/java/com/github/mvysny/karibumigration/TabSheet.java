@@ -28,7 +28,7 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
      * Maps {@link Tab} to the provider of the contents of the tab.
      */
     @NotNull
-    private final Map<Tab, SerializableSupplier<? extends Component>> tabsToContentsProvider = new HashMap<>();
+    private final Map<Tab, SerializableSupplier<? extends Component>> tabsToContentProvider = new HashMap<>();
     @NotNull
     private final VerticalLayout content = new VerticalLayout();
     @NotNull
@@ -119,12 +119,12 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
      * constructed lazily when the tab is selected for the first time.
      */
     @NotNull
-    public Tab addLazyTab(@Nullable String label, @NotNull SerializableSupplier<Component> contentsProvider) {
+    public Tab addLazyTab(@Nullable String label, @NotNull SerializableSupplier<? extends Component> contentsProvider) {
         Objects.requireNonNull(contentsProvider);
         final Tab tab = new Tab(label);
         tabsComponent.add(tab);
         tabsToContents.put(tab, null);
-        tabsToContentsProvider.put(tab, contentsProvider);
+        tabsToContentProvider.put(tab, contentsProvider);
         update();
         return tab;
     }
@@ -135,7 +135,7 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
      * constructed lazily when the tab is selected for the first time.
      */
     @NotNull
-    public Tab addLazyTab(@NotNull SerializableSupplier<Component> contentsProvider) {
+    public Tab addLazyTab(@NotNull SerializableSupplier<? extends Component> contentsProvider) {
         return addLazyTab(null, contentsProvider);
     }
 
@@ -146,7 +146,7 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
         checkOurTab(tab);
         Objects.requireNonNull(newContents);
         tabsToContents.put(tab, newContents);
-        tabsToContentsProvider.remove(tab);
+        tabsToContentProvider.remove(tab);
         update();
     }
 
@@ -244,5 +244,47 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
      */
     public void setOrientation(@NotNull Tabs.Orientation orientation) {
         tabsComponent.setOrientation(orientation);
+    }
+
+    @Nullable
+    private Component getSelectedTabContent() {
+        return tabsContainer.getChildren().findFirst().orElse(null);
+    }
+
+    private void update() {
+        final Component currentTabContent = getSelectedTabContent();
+        final Tab selectedTab1 = getSelectedTab();
+
+        Component newTabContent;
+        if (selectedTab1 == null) {
+            newTabContent = null;
+        } else {
+            newTabContent = tabsToContents.get(selectedTab1);
+            if (newTabContent == null) {
+                SerializableSupplier<? extends Component> provider = tabsToContentProvider.get(selectedTab1);
+                if (provider != null) {
+                    newTabContent = provider.get();
+                    Objects.requireNonNull(newTabContent, "content provider for tab " + selectedTab1 + " provided null contents: " + provider);
+                    tabsToContentProvider.remove(selectedTab1);
+                    tabsToContents.put(selectedTab1, newTabContent);
+                }
+            }
+        }
+
+        if (!Objects.equals(currentTabContent, newTabContent)) {
+            tabsContainer.removeAll();
+            if (newTabContent != null) {
+                tabsContainer.add(newTabContent);
+            }
+        }
+    }
+
+    /**
+     * Removes all tabs.
+     */
+    public void removeAll() {
+        tabsToContents.clear();
+        tabsComponent.removeAll();
+        update();
     }
 }
