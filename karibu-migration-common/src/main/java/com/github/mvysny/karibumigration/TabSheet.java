@@ -1,21 +1,17 @@
 package com.github.mvysny.karibumigration;
 
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.HasSize;
-import com.vaadin.flow.component.HasStyle;
+import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.function.SerializableSupplier;
+import com.vaadin.flow.shared.Registration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class TabSheet extends Composite<Component> implements HasStyle, HasSize {
     /**
@@ -286,5 +282,34 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
         tabsToContents.clear();
         tabsComponent.removeAll();
         update();
+    }
+
+    /**
+     * A live list of all tabs. The list is read-only but live: it reflects changes when tabs are added or removed.
+     */
+    @NotNull
+    private final List<Tab> tabs = new AbstractList<Tab>() {
+        @Override
+        public Tab get(int index) {
+            return (Tab) tabsComponent.getComponentAt(index);
+        }
+
+        @Override
+        public int size() {
+            return getTabCount();
+        }
+    };
+
+    /**
+     * Returns a live list of all tabs. The list is read-only but live: it reflects changes when tabs are added or removed.
+     */
+    @NotNull
+    public List<Tab> getTabs() {
+        return tabs;
+    }
+
+    @NotNull
+    public Registration addSelectedChangeListener(@NotNull ComponentEventListener<Tabs.SelectedChangeEvent> listener) {
+        return tabsComponent.addSelectedChangeListener(listener);
     }
 }
