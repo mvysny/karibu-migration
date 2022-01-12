@@ -75,7 +75,7 @@ public class ListSelect<T> extends MultiSelectListBox<T> {
     }
 
     public void setItemLabelGenerator(@NotNull ItemLabelGenerator<T> generator) {
-        // see+vote for https://github.com/vaadin/flow/issues/12699
+        // see+vote for https://github.com/vaadin/platform/issues/2601
         this.itemLabelGenerator = Objects.requireNonNull(generator);
         setRenderer(new TextRenderer<>(itemLabelGenerator));
     }
