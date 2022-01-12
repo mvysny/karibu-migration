@@ -2,6 +2,7 @@ package com.github.mvysny.karibumigration
 
 import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.dynatest.expectList
+import com.github.mvysny.kaributesting.v10.getRenderedItems
 
 class ListSelectTest : DynaTest({
     test("smoke") {
