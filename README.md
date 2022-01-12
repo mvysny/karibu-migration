@@ -104,7 +104,7 @@ Find more information here:
 * `HasSize.setHeightUndefined()` is replaced by `setHeight(null)`
 * `Component.setCaption()` is replaced by `Component.setLabel()` from karibu-tools.
    * Warning: in order for the caption to be visible, the component must be nested in `VerticalLayout`/`HorizontalLayout`/`FlexLayout`.
-   * Alternatively, wrap the component in the `LabelWrapper` component decorator from karibu-tools which adds label to any component.
+   * Alternatively, wrap the component in the `LabelWrapper` component decorator from `karibu-migration-common`.
    * See more at [Vaadin 8->14 Counterparts blogpost](https://mvysny.github.io/vaadin-8-14-api-counterparts/)
 * `Component.getCaption()` is replaced by `Component.getLabel()` from karibu-tools. 
 * `CssLayout` is replaced by a `Div`
@@ -262,7 +262,7 @@ Make sure to have your `CustomField` implement `HasSize` and call `this.setWidth
 Not available directly. You can either build your own component out of Vaadin 14 `Tabs`+`Tab`
 (but that's just the tab header area), or try to use:
 
-* `TabSheet` from `karibu-migration-commons` (a direct replacement)
+* `TabSheet` from `karibu-migration-common` (a direct replacement)
 * `TabSheet` from [karibu-dsl](https://github.com/mvysny/karibu-dsl) (the same thing but in Kotlin with DSL support)
 * [paged-tabs](https://vaadin.com/directory/component/paged-tabs) Vaadin Directory extension
   - kinda works but the API is not that rich compared to Vaadin 8's TabSheet.
@@ -272,6 +272,16 @@ Not available directly. You can either build your own component out of Vaadin 14
 Use the `VerticalSplitPanel` and `HorizontalSplitPanel` classes extending the Vaadin 14 `SplitLayout`
 providing the old Vaadin 8 API. Note that only `Unit.PERCENTAGE` is supported -
 trying to use `Unit.PX` will fail with an exception.
+
+## TwinColSelect
+
+Sorry, no replacement at the moment. TBD
+
+## ListSelect
+
+Use ListBox. There is a `ListSelect` component provided by `karibu-migration-common` which mimics Vaadin 8 version.
+
+* `setItemCaptionGenerator()` - replaced by `setRenderer(new TextRenderer<>(itemLabelGenerator));`. See+vote on [issue #12699](https://github.com/vaadin/flow/issues/12699).
 
 # Resources
 
