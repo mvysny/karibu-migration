@@ -281,7 +281,8 @@ Sorry, no replacement at the moment. TBD
 
 Replace with MultiSelectListBox. There is also a `ListSelect` component provided by `karibu-migration-common` which mimics Vaadin 8 version.
 
-* `setItemCaptionGenerator()` - replaced by `setRenderer(new TextRenderer<>(itemLabelGenerator));`. See+vote on [issue #2601](https://github.com/vaadin/platform/issues/2601).
+* `setItemCaptionGenerator()` - implemented in `ListSelect`; replaced by `setRenderer(new TextRenderer<>(itemLabelGenerator));`. See+vote on [issue #2601](https://github.com/vaadin/platform/issues/2601).
+  Also replaced by Karibu-Tools's `ListBoxBase.setItemLabelGenerator()`.
 
 # Resources
 
