@@ -6,7 +6,7 @@ plugins {
     id("org.gretty") version "3.0.6"
     `maven-publish`
     signing
-    id("com.vaadin") version "0.14.7.5" apply(false)
+    id("com.vaadin") version "0.14.8.1" apply(false)
 }
 
 defaultTasks("clean", "build")
