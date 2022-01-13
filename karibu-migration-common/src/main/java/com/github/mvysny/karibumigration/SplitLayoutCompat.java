@@ -19,7 +19,6 @@ public abstract class SplitLayoutCompat extends SplitLayout {
      * @param c
      *            the component to be added.
      */
-
     public void addComponent(Component c) {
         if (getFirstComponent() == null) {
             setFirstComponent(c);

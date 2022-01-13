@@ -77,4 +77,28 @@ fun DynaNodeGroup.splitLayoutCompatTests(factory: () -> SplitLayoutCompat) {
         p.removeComponent(fc)
         expect(0) { p.componentCount }
     }
+
+    test("setting firstComponent multiple times removes the previous one") {
+        val p = factory()
+        expect(null) { p.firstComponent }
+        val fc = Span("first")
+        p.firstComponent = fc
+        expect(fc) { p.firstComponent }
+        val fc2 = Span("first 2")
+        p.firstComponent = fc2
+        expect(fc2) { p.firstComponent }
+        expect(null) { fc.parent.orElse(null) }
+    }
+
+    test("setting secondComponent multiple times removes the previous one") {
+        val p = factory()
+        expect(null) { p.secondComponent }
+        val fc = Span("first")
+        p.secondComponent = fc
+        expect(fc) { p.secondComponent }
+        val fc2 = Span("first 2")
+        p.secondComponent = fc2
+        expect(fc2) { p.secondComponent }
+        expect(null) { fc.parent.orElse(null) }
+    }
 }
