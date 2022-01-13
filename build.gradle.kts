@@ -13,7 +13,7 @@ defaultTasks("clean", "build")
 
 allprojects {
     group = "com.github.mvysny.karibu-migration"
-    version = "0.2"
+    version = "0.3-SNAPSHOT"
 
     repositories {
         mavenCentral()
