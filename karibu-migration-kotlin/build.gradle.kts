@@ -3,7 +3,7 @@ kotlin {
 }
 
 dependencies {
-    api("com.github.mvysny.karibu-tools:karibu-tools:0.7")
+    api("com.github.mvysny.karibu-tools:karibu-tools:0.8")
     api(kotlin("stdlib-jdk8"))
     api(project(":karibu-migration-common"))
     // Vaadin 14
