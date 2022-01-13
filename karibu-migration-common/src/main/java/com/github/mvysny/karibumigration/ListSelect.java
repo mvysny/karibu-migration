@@ -5,6 +5,7 @@ import com.vaadin.flow.component.listbox.MultiSelectListBox;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.TextRenderer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -25,7 +26,7 @@ public class ListSelect<T> extends MultiSelectListBox<T> {
      * @deprecated ListBox doesn't support caption.
      */
     @Deprecated
-    public ListSelect(String caption) {
+    public ListSelect(@Nullable String caption) {
         this();
         setCaption(caption);
     }
@@ -52,7 +53,7 @@ public class ListSelect<T> extends MultiSelectListBox<T> {
      * @param options
      *            the options, cannot be {@code null}
      */
-    public ListSelect(String caption, Collection<T> options) {
+    public ListSelect(@Nullable String caption, @NotNull Collection<T> options) {
         this(caption, DataProvider.ofCollection(options));
     }
 
@@ -60,7 +61,7 @@ public class ListSelect<T> extends MultiSelectListBox<T> {
      * @deprecated ListBox doesn't support caption.
      */
     @Deprecated
-    public void setCaption(String caption) {
+    public void setCaption(@Nullable String caption) {
         // do nothing
     }
 

@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.Objects;
 
 /**
- * Mimicks the Vaadin 8 RadioButtonGroup. Supports {@link #setItemDescriptionGenerator(ItemLabelGenerator)}
+ * Mimics the Vaadin 8 RadioButtonGroup. Supports {@link #setItemDescriptionGenerator(ItemLabelGenerator)}
  * and {@link #setHtmlContentAllowed(boolean)}.
  * @param <T> the item type.
  */

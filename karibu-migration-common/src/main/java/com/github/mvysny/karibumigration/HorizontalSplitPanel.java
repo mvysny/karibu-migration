@@ -1,8 +1,10 @@
 package com.github.mvysny.karibumigration;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.splitlayout.SplitLayout;
 
+/**
+ * Replacement for Vaadin 8 HorizontalSplitPanel.
+ */
 @Deprecated
 public class HorizontalSplitPanel extends SplitLayoutCompat {
     public HorizontalSplitPanel() {

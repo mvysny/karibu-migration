@@ -11,6 +11,9 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * A poor man's replacement for Vaadin 8 GridLayout.
+ */
 public class GridLayout extends FlexLayout {
     @Nullable
     private FlexComponent.Alignment alignment = null;

@@ -42,7 +42,7 @@ public class LabelWrapper extends CustomField<Void> implements HasComponents, Ha
     }
 
     @Override
-    public void setWidth(String width) {
+    public void setWidth(@Nullable String width) {
         super.setWidth(width);
         updateContentSize();
     }
@@ -73,12 +73,12 @@ public class LabelWrapper extends CustomField<Void> implements HasComponents, Ha
     }
 
     @Override
-    protected void setPresentationValue(Void newPresentationValue) {
+    protected void setPresentationValue(@Nullable Void newPresentationValue) {
         // ignore; this component only serves to add a label to the wrapped contents
     }
 
     @Override
-    public void add(Component... components) {
+    public void add(@NotNull Component... components) {
         super.add(components);
         if (Arrays.stream(components).anyMatch(LabelWrapper::isFillParent)) {
             setWidthFull();
@@ -86,7 +86,7 @@ public class LabelWrapper extends CustomField<Void> implements HasComponents, Ha
     }
 
     @Override
-    public void remove(Component... components) {
+    public void remove(@NotNull Component... components) {
         super.remove(components);
     }
 }

@@ -13,6 +13,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
+/**
+ * A drop-in replacement for Vaadin 8's TabSheet. Shows both the {@link Tabs} component
+ * and the tab contents.
+ * <p></p>
+ * You can add and populate tabs in two ways:
+ * <ul><li>eagerly, by calling {@link #addTab()} function, or</li>
+ * <li>lazily, by calling {@link #addLazyTab(SerializableSupplier)}</li>.
+ * </ul>
+ */
 public class TabSheet extends Composite<Component> implements HasStyle, HasSize {
     /**
      * Maps {@link Tab} to the contents of the tab.
