@@ -37,7 +37,7 @@ There are two modules available:
 
 * The `karibu-migration-common` module is pure Java, doesn't depend on Kotlin and brings in a set of
   compatibility-helping components: `GridLayout`, `HtmlSpan`, `HorizontalSplitPanel`,
-  `NativeSelect`, `RadioButtonGroupCompat`, `SplitLayoutCompat` and `VerticalSplitPanel`.
+  `NativeSelect`, `RadioButtonGroupCompat`, `SplitLayoutCompat`, `VerticalSplitPanel`, `LabelWrapper` and others.
 * The `karibu-migration-kotlin` builds on `karibu-migration-common` and adds lots
   of useful Kotlin extension methods to Vaadin 14+ components which emulate Vaadin 8 API.
   If you ever wanted to convert your Vaadin 8 project to Kotlin and clean it up,
