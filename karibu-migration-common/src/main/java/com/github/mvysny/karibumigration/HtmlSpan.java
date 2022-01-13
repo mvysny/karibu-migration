@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
  * component. Passing raw input data to the user will possibly lead to
  * cross-site scripting attacks.
  * <p></p>
- * This component does not expand the HTML fragment into a server side DOM tree
+ * This component does not expand the HTML fragment into a server side DOM tree,
  * so you cannot traverse or modify the HTML on the server. The root element can
  * be accessed through {@link #getElement()} and the inner HTML through
  * {@link #getInnerHtml()}.
