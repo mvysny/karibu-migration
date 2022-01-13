@@ -1,9 +1,6 @@
 package testapp
 
-import com.github.mvysny.karibumigration.HtmlSpan
-import com.github.mvysny.karibumigration.RadioButtonGroup
-import com.github.mvysny.karibumigration.RadioButtonGroupCompat
-import com.github.mvysny.karibumigration.TabSheet
+import com.github.mvysny.karibumigration.*
 import com.vaadin.flow.component.checkbox.Checkbox
 import com.vaadin.flow.component.orderedlayout.VerticalLayout
 import com.vaadin.flow.router.Route
@@ -13,6 +10,7 @@ class MainLayout : TabSheet() {
     init {
         addLazyTab("RadioButtonGroupCompat") { RadioButtonGroupCompatDemo() }
         addLazyTab("HtmlSpan") { HtmlSpan("This text is <b>bold</b>, <i>italic</i> and <u>underlined</u>") }
+        addLazyTab("LabelWrapper") { LabelWrapperDemo() }
     }
 }
 

@@ -10,7 +10,8 @@ import java.util.Collection;
 import java.util.Objects;
 
 /**
- * Replacement for Vaadin 8's ListSelect. Doesn't support captions though.
+ * Replacement for Vaadin 8's ListSelect. Doesn't support captions though - use {@link LabelWrapper}
+ * if need be.
  */
 public class ListSelect<T> extends MultiSelectListBox<T> {
     public ListSelect() {
