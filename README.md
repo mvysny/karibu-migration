@@ -129,7 +129,11 @@ It is discouraged to have a custom UI class. If this is necessary, it's better t
 create a separate utility class and store it into the UI instance via `ComponentUtil.setData(UI.getCurrent(), Util.class, util)`.
 Alternatively see [How to correctly extend a UI](https://vaadin.com/forum/thread/18184719/how-to-correctly-extend-a-ui).
 
-* `UI.getUiRootPath()` - prints the context root with the leading slash, e.g. `/Gradle___karibu_helloworld_application_war` and so it’s perfect for creating navigational links. Replaced with `VaadinRequest.getCurrent().getContextPath()`.
+* `UI.getUiRootPath()` - prints the context root with the leading slash, e.g. `/Gradle___karibu_helloworld_application_war`
+   and so it’s perfect for creating navigational links. Replaced with `VaadinRequest.getCurrent().getContextPath()`.
+* `UI.setMobileHtml5DndEnabled()` - No longer necessary: mobile html 5 Drag'n'drop is enabled automatically on Vaadin 14+.
+   Read [Drag and drop on mobile devices](https://vaadin.com/docs/latest/flow/dnd#drag-and-drop-on-mobile-devices)
+   for more info.
 
 ## ComboBox
 
