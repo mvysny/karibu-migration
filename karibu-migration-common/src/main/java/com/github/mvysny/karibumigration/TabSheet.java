@@ -76,7 +76,10 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
      */
     @NotNull
     public Tab addTab(@Nullable String label, @Nullable Component contents) {
-        final Tab tab = new Tab(label);
+        final Tab tab = createTab();
+        if (label != null) {
+            tab.setLabel(label);
+        }
         tabsComponent.add(tab);
         tabsToContents.put(tab, contents);
         update();
@@ -126,7 +129,10 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
     @NotNull
     public Tab addLazyTab(@Nullable String label, @NotNull SerializableSupplier<? extends Component> contentsProvider) {
         Objects.requireNonNull(contentsProvider);
-        final Tab tab = new Tab(label);
+        final Tab tab = createTab();
+        if (label != null) {
+            tab.setLabel(label);
+        }
         tabsComponent.add(tab);
         tabsToContents.put(tab, null);
         tabsToContentProvider.put(tab, contentsProvider);
@@ -324,5 +330,16 @@ public class TabSheet extends Composite<Component> implements HasStyle, HasSize 
     public int indexOf(@NotNull Tab tab) {
         Objects.requireNonNull(tab);
         return tabsComponent.indexOf(tab);
+    }
+
+    /**
+     * Sometimes it's good to extend the {@link Tab} class, insert a bit of styling+business logic there,
+     * then use your customized tabs with the TabSheet. In such case override this function and provide
+     * instances of your custom tab here.
+     * @return a new {@link Tab} instance, not null.
+     */
+    @NotNull
+    protected Tab createTab() {
+        return new Tab();
     }
 }
