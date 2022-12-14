@@ -2,11 +2,11 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.7.21"
     id("org.gretty") version "3.0.6"
     `maven-publish`
     signing
-    id("com.vaadin") version "0.14.8.1" apply(false)
+    id("com.vaadin") version "0.14.9.1" apply(false)
 }
 
 defaultTasks("clean", "build")
