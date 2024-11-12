@@ -13,7 +13,7 @@ jetbrains-annotations = "org.jetbrains:annotations:24.1.0"
 javax-servletapi = "javax.servlet:javax.servlet-api:4.0.1"
 karibu-testing = "com.github.mvysny.kaributesting:karibu-testing-v10:1.4.0"
 karibu-tools = "com.github.mvysny.karibu-tools:karibu-tools:0.21"
+junit = "org.junit.jupiter:junit-jupiter-engine:5.11.0"
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin" }
-

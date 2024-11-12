@@ -1,39 +1,39 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
 import com.vaadin.flow.component.html.Span
+import org.junit.jupiter.api.Test
 import kotlin.test.expect
 
-class ComponentsTest : DynaTest({
-    test("setWidthUndefined") {
+class ComponentsTest {
+    @Test fun setWidthUndefined() {
         val s = Span()
         s.setWidthFull()
         s.setWidthUndefined()
         expect(null) { s.width }
     }
-    test("setHeightUndefined") {
+    @Test fun setHeightUndefined() {
         val s = Span()
         s.setHeightFull()
         s.setHeightUndefined()
         expect(null) { s.height }
     }
-    test("caption") {
+    @Test fun caption() {
         val s = Span()
         s.setCaption("foo")
         expect("foo") { s.getCaption() }
     }
-    test("description") {
+    @Test fun description() {
         val s = Span()
         s.description = "foo"
         expect("foo") { s.description }
     }
-    test("remove all") {
+    @Test fun `remove all`() {
         Span().removeAllComponents()
     }
-    test("addComponent") {
+    @Test fun addComponent() {
         Span().addComponent(Span())
     }
-    test("removeComponent") {
+    @Test fun removeComponent() {
         Span().removeComponent(Span())
     }
-})
+}

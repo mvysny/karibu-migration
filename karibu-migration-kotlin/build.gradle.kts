@@ -13,9 +13,10 @@ dependencies {
     api(libs.jetbrains.annotations)
 
     testImplementation(libs.vaadin.core)
-    testImplementation(libs.dynatest)
+    testImplementation(libs.junit)
     testImplementation(libs.slf4j.simple)
     testImplementation(libs.karibu.testing)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 val configureMavenCentral = ext["configureMavenCentral"] as (artifactId: String) -> Unit

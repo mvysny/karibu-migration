@@ -1,11 +1,11 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup
+import org.junit.jupiter.api.Test
 
-class RadioButtonGroupsTest : DynaTest({
-    test("api") {
+class RadioButtonGroupsTest {
+    @Test fun api() {
         val r = RadioButtonGroup<String>()
         r.setItemCaptionGenerator { it }
     }
-})
+}

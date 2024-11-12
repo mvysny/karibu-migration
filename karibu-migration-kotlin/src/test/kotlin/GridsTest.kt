@@ -1,10 +1,10 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
 import com.vaadin.flow.component.grid.Grid
+import org.junit.jupiter.api.Test
 
-class GridsTest : DynaTest({
-    test("api") {
+class GridsTest {
+    @Test fun api() {
         val g = Grid<String>()
         val c: Grid.Column<String> = g.addColumn { it }
         c.setDescriptionGenerator { it }
@@ -13,11 +13,11 @@ class GridsTest : DynaTest({
         g.getHeaderRowCount()
         g.getFooterRowCount()
     }
-    test("fluent api") {
+    @Test fun `fluent api`() {
         val g = Grid<String>()
         val c: Grid.Column<String> = g.addColumn { it }
             .setDescriptionGenerator { it }
             .setExpandRatio(3)
             .setCaption("Foo")
     }
-})
+}

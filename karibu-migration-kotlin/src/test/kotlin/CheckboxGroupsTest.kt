@@ -1,11 +1,11 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
 import com.vaadin.flow.component.checkbox.CheckboxGroup
+import org.junit.jupiter.api.Test
 
-class CheckboxGroupsTest : DynaTest({
-    test("api") {
+class CheckboxGroupsTest {
+    @Test fun api() {
         val r = CheckboxGroup<String>()
         r.setItemCaptionGenerator { it }
     }
-})
+}
