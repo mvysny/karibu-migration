@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.github.mvysny.karibumigration
 
 import org.junit.jupiter.api.Test

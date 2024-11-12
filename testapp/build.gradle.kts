@@ -11,7 +11,7 @@ dependencies {
     implementation(libs.vaadin.boot)
 
     testImplementation(libs.karibu.testing)
-    testImplementation(libs.dynatest)
+    testImplementation(libs.junit)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
