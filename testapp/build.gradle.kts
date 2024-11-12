@@ -14,3 +14,7 @@ dependencies {
     testImplementation(libs.dynatest)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
+
+application {
+    mainClass = "testapp.MainKt"
+}
