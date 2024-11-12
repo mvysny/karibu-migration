@@ -6,7 +6,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout
 import com.vaadin.flow.component.orderedlayout.VerticalLayout
 
 @Deprecated("Use either expand() or setFlexGrow()")
-public fun FlexComponent<*>.setExpandRatio(child: Component, expandRatio: Float) {
+public fun FlexComponent.setExpandRatio(child: Component, expandRatio: Float) {
     if (expandRatio == 1f) {
         expand(child)
     } else {

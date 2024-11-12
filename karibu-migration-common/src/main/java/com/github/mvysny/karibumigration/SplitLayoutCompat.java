@@ -6,6 +6,8 @@ import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.splitlayout.SplitLayout;
 import com.vaadin.flow.shared.Registration;
 
+import java.lang.reflect.Field;
+
 @Deprecated
 public abstract class SplitLayoutCompat extends SplitLayout {
     public SplitLayoutCompat() {
@@ -31,11 +33,45 @@ public abstract class SplitLayoutCompat extends SplitLayout {
     }
 
     public void setSecondComponent(Component secondComponent) {
-        addToSecondary(secondComponent);
+        if (secondComponent == null) {
+            clearSecondComponent();
+        } else {
+            addToSecondary(secondComponent);
+        }
+    }
+
+    public void clearFirstComponent() {
+        if (getFirstComponent() != null) {
+            remove(getFirstComponent());
+            try {
+                final Field f = SplitLayout.class.getDeclaredField("primaryComponent");
+                f.setAccessible(true);
+                f.set(this, null);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void clearSecondComponent() {
+        if (getSecondComponent() != null) {
+            remove(getSecondComponent());
+            try {
+                final Field f = SplitLayout.class.getDeclaredField("secondaryComponent");
+                f.setAccessible(true);
+                f.set(this, null);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public void setFirstComponent(Component firstComponent) {
-        addToPrimary(firstComponent);
+        if (firstComponent == null) {
+            clearFirstComponent();
+        } else {
+            addToPrimary(firstComponent);
+        }
     }
 
     public Component getFirstComponent() {

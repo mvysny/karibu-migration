@@ -4,7 +4,7 @@
 plugins {
     id("org.gretty")
     war
-    id("com.vaadin")
+    alias(libs.plugins.vaadin)
 }
 
 gretty {
@@ -14,14 +14,8 @@ gretty {
 
 dependencies {
     implementation(project(":karibu-migration-kotlin"))
-    // Vaadin 14
-    implementation(libs.vaadin.v14.core) {
-        // Webjars are only needed when running in Vaadin 13 compatibility mode
-        listOf("com.vaadin.webjar", "org.webjars.bowergithub.insites",
-                "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",
-                "org.webjars.bowergithub.vaadin", "org.webjars.bowergithub.webcomponents")
-                .forEach { exclude(group = it) }
-    }
+    // Vaadin
+    implementation(libs.vaadin.core)
     providedCompile(libs.javax.servletapi)
     implementation(libs.slf4j.simple)
 

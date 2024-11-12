@@ -1,24 +1,12 @@
 dependencies {
-    // Vaadin 14
-    compileOnly(libs.vaadin.v14.core) {
-        // Webjars are only needed when running in Vaadin 13 compatibility mode
-        listOf("com.vaadin.webjar", "org.webjars.bowergithub.insites",
-                "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",
-                "org.webjars.bowergithub.vaadin", "org.webjars.bowergithub.webcomponents")
-                .forEach { exclude(group = it) }
-    }
+    // Vaadin
+    compileOnly(libs.vaadin.core)
     compileOnly(libs.javax.servletapi)
     // IDEA language injections
     api(libs.jetbrains.annotations)
 
     testImplementation(kotlin("stdlib-jdk8"))
-    testImplementation(libs.vaadin.v14.core) {
-        // Webjars are only needed when running in Vaadin 13 compatibility mode
-        listOf("com.vaadin.webjar", "org.webjars.bowergithub.insites",
-                "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",
-                "org.webjars.bowergithub.vaadin", "org.webjars.bowergithub.webcomponents")
-                .forEach { exclude(group = it) }
-    }
+    testImplementation(libs.vaadin.core)
     testImplementation(libs.dynatest)
     testImplementation(libs.slf4j.simple)
     testImplementation(libs.karibu.testing)

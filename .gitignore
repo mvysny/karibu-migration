@@ -7,4 +7,5 @@ classes
 .attach_pid*
 target
 node_modules
-webpack.generated.js
+vite.generated.ts
+testapp/frontend/generated

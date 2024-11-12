@@ -1,14 +1,18 @@
 [versions]
 slf4j = "2.0.13"
 # Check the newest Vaadin version at https://github.com/vaadin/platform/tags
-vaadin14 = "14.11.7"
+vaadin = "23.4.1"
 
 [libraries]
 dynatest = "com.github.mvysny.dynatest:dynatest:0.25"
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
-vaadin-v14-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin14" }
+vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin" }
 jetbrains-annotations = "org.jetbrains:annotations:24.1.0"
 javax-servletapi = "javax.servlet:javax.servlet-api:4.0.1"
 karibu-testing = "com.github.mvysny.kaributesting:karibu-testing-v10:1.4.0"
 karibu-tools = "com.github.mvysny.karibu-tools:karibu-tools:0.8"
+
+[plugins]
+vaadin = { id = "com.vaadin", version.ref = "vaadin" }
+
