@@ -1,25 +1,16 @@
-// The Beverage Buddy sample project ported to Kotlin.
-// Original project: https://github.com/vaadin/beverage-starter-flow
-
 plugins {
-    id("org.gretty")
-    war
+    application
     alias(libs.plugins.vaadin)
-}
-
-gretty {
-    contextPath = "/"
-    servletContainer = "jetty9.4"
 }
 
 dependencies {
     implementation(project(":karibu-migration-kotlin"))
     // Vaadin
     implementation(libs.vaadin.core)
-    providedCompile(libs.javax.servletapi)
     implementation(libs.slf4j.simple)
+    implementation(libs.vaadin.boot)
 
     testImplementation(libs.karibu.testing)
     testImplementation(libs.dynatest)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
-
