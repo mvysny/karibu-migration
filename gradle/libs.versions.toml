@@ -4,7 +4,6 @@ slf4j = "2.0.13"
 vaadin = "23.4.1"
 
 [libraries]
-dynatest = "com.github.mvysny.dynatest:dynatest:0.25"
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin" }
