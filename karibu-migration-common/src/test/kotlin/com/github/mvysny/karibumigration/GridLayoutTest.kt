@@ -1,11 +1,11 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
+import org.junit.jupiter.api.Test
 
-class GridLayoutTest : DynaTest({
-    test("smoke") {
+class GridLayoutTest {
+    @Test fun smoke() {
         GridLayout()
         GridLayout(1)
         GridLayout(3, 5)
     }
-})
+}

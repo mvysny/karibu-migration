@@ -1,13 +1,13 @@
+@file:Suppress("DEPRECATION")
+
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
-import com.vaadin.flow.component.html.Div
-import com.vaadin.flow.component.html.Span
-import kotlin.test.expect
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 
-class VerticalSplitPlanelTest : DynaTest({
-    test("smoke") {
+class VerticalSplitPlanelTest {
+    @Test fun smoke() {
         VerticalSplitPanel()
     }
-    splitLayoutCompatTests { VerticalSplitPanel() }
-})
+    @Nested inner class VerticalSplitPanelTests : AbstractSplitLayoutCompatTests({ VerticalSplitPanel() })
+}

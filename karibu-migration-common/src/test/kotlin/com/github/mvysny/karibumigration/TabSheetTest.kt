@@ -1,47 +1,50 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.kaributesting.v10.*
 import com.vaadin.flow.component.UI
 import com.vaadin.flow.component.html.Label
 import com.vaadin.flow.component.html.Span
 import com.vaadin.flow.component.tabs.Tab
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 import kotlin.test.expect
 import kotlin.test.fail
 
-class TabSheetTest : DynaTest({
-    beforeEach { MockVaadin.setup() }
-    afterEach { MockVaadin.tearDown() }
+class TabSheetTest {
+    @BeforeEach fun fakeVaadin() { MockVaadin.setup() }
+    @AfterEach fun tearDownVaadin() { MockVaadin.tearDown() }
 
-    test("smoke") {
+    @Test fun smoke() {
         UI.getCurrent().add(TabSheet())
         _expectOne<TabSheet>()
     }
 
-    group("content population") {
-        test("Initially empty") {
+    @Nested inner class `content population` {
+        @Test fun `Initially empty`() {
             val ts = TabSheet()
             ts._expectNone<Tab>()
         }
-        test("Adding a tab to an empty TabSheet shows it immediately") {
+        @Test fun `Adding a tab to an empty TabSheet shows it immediately`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts._expectOne<Span> { text = "it works!" }
         }
-        test("Adding a tab to a non-empty TabSheet doesn't change the currently shown tab") {
+        @Test fun `Adding a tab to a non-empty TabSheet doesn't change the currently shown tab`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.addTab("bar", Span("it works 2!"))
             ts._expectOne<Span> { text = "it works!" }
             ts._expectNone<Span>() { text = "it works 2!" }
         }
-        test("Removing last tab clears the TabSheet contents") {
+        @Test fun `Removing last tab clears the TabSheet contents`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
             ts.remove(tab)
             ts._expectNone<Span> { text = "it works!" }
         }
-        test("Removing all tabs clears the TabSheet contents") {
+        @Test fun `Removing all tabs clears the TabSheet contents`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.removeAll()
@@ -50,71 +53,71 @@ class TabSheetTest : DynaTest({
         }
     }
 
-    group("tabCount") {
-        test("zero when empty") {
+    @Nested inner class tabCount {
+        @Test fun `zero when empty`() {
             expect(0) { TabSheet().tabCount }
         }
-        test("adding 1 tab") {
+        @Test fun `adding 1 tab`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             expect(1) { ts.tabCount }
         }
-        test("two tabs") {
+        @Test fun `two tabs`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.addTab("bar", Span("it works 2!"))
             expect(2) { ts.tabCount }
         }
-        test("10 tabs") {
+        @Test fun `10 tabs`() {
             val ts = TabSheet()
             (0..9).map { ts.addTab("tab $it") }
             expect(10) { ts.tabCount }
         }
-        test("Removing last tab brings count to 0") {
+        @Test fun `Removing last tab brings count to 0`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
             ts.remove(tab)
             expect(0) { ts.tabCount }
         }
-        test("Removing all tabs brings count to 0") {
+        @Test fun `Removing all tabs brings count to 0`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
             ts.removeAll()
             expect(0) { ts.tabCount }
         }
-        test("Adding a tab with null contents works") {
+        @Test fun `Adding a tab with null contents works`() {
             val ts = TabSheet()
             ts.addTab("foo")
             expect(1) { ts.tabCount }
         }
-        test("Adding a tab with null label+contents works") {
+        @Test fun `Adding a tab with null label+contents works`() {
             val ts = TabSheet()
             ts.addTab()
             expect(1) { ts.tabCount }
         }
-        test("Add a lazy tab") {
+        @Test fun `Add a lazy tab`() {
             val ts = TabSheet()
             ts.addLazyTab("foo") { Span("foo") }
             expect(1) { ts.tabCount }
         }
     }
 
-    group("selectedIndex") {
-        test("-1 when empty") {
+    @Nested inner class selectedIndex {
+        @Test fun `-1 when empty`() {
             expect(-1) { TabSheet().selectedIndex }
         }
-        test("Adding a tab to an empty TabSheet selects it immediately") {
+        @Test fun `Adding a tab to an empty TabSheet selects it immediately`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             expect(0) { ts.selectedIndex }
         }
-        test("Adding a tab to a non-empty TabSheet doesn't change the selection") {
+        @Test fun `Adding a tab to a non-empty TabSheet doesn't change the selection`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.addTab("bar", Span("it works 2!"))
             expect(0) { ts.selectedIndex }
         }
-        test("Selecting a tab will properly display it") {
+        @Test fun `Selecting a tab will properly display it`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.addTab("bar", Span("it works 2!"))
@@ -127,24 +130,24 @@ class TabSheetTest : DynaTest({
             ts._expectNone<Span> { text = "it works 2!" }
             ts._expectOne<Span> { text = "it works!" }
         }
-        test("Removing last tab clears selection") {
+        @Test fun `Removing last tab clears selection`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
             ts.remove(tab)
             expect(-1) { ts.selectedIndex }
         }
-        test("Removing all tabs clears selection") {
+        @Test fun `Removing all tabs clears selection`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.removeAll()
             expect(-1) { ts.selectedIndex }
         }
-        test("Adding a tab with null contents works") {
+        @Test fun `Adding a tab with null contents works`() {
             val ts = TabSheet()
             ts.addTab("foo")
             expect(0) { ts.selectedIndex }
         }
-        test("Selecting no tab") {
+        @Test fun `Selecting no tab`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.selectedIndex = -1
@@ -153,44 +156,44 @@ class TabSheetTest : DynaTest({
         }
     }
 
-    group("selectedTab") {
-        test("null when empty") {
+    @Nested inner class selectedTab {
+        @Test fun `null when empty`() {
             expect(null) { TabSheet().selectedTab }
         }
-        test("Adding a tab to an empty TabSheet selects it immediately") {
+        @Test fun `Adding a tab to an empty TabSheet selects it immediately`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
             expect(tab) { ts.selectedTab }
         }
-        test("Adding a tab to a non-empty TabSheet doesn't change the selection") {
+        @Test fun `Adding a tab to a non-empty TabSheet doesn't change the selection`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
             ts.addTab("bar", Span("it works 2!"))
             expect(tab) { ts.selectedTab }
         }
-        test("Removing last tab clears selection") {
+        @Test fun `Removing last tab clears selection`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
             ts.remove(tab)
             expect(null) { ts.selectedTab }
         }
-        test("Removing all tabs clears selection") {
+        @Test fun `Removing all tabs clears selection`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.removeAll()
             expect(null) { ts.selectedTab }
         }
-        test("Adding a tab with null contents works") {
+        @Test fun `Adding a tab with null contents works`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo")
             expect(tab) { ts.selectedTab }
         }
-        test("Add lazy tab") {
+        @Test fun `Add lazy tab`() {
             val ts = TabSheet()
             val tab = ts.addLazyTab("foo") { Span("it works!") }
             expect(tab) { ts.selectedTab }
         }
-        test("Selecting a tab will properly display it") {
+        @Test fun `Selecting a tab will properly display it`() {
             val ts = TabSheet()
             val tab1 = ts.addTab("foo", Span("it works!"))
             val tab2 = ts.addTab("bar", Span("it works 2!"))
@@ -203,7 +206,7 @@ class TabSheetTest : DynaTest({
             ts._expectNone<Span> { text = "it works 2!" }
             ts._expectOne<Span> { text = "it works!" }
         }
-        test("Selecting no tab") {
+        @Test fun `Selecting no tab`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.selectedTab = null
@@ -212,41 +215,41 @@ class TabSheetTest : DynaTest({
         }
     }
 
-    group("selectedTabContents") {
-        test("null when empty") {
+    @Nested inner class selectedTabContents {
+        @Test fun `null when empty`() {
             expect(null) { TabSheet().selectedTabContents }
         }
-        test("Adding a tab to an empty TabSheet selects it immediately") {
+        @Test fun `Adding a tab to an empty TabSheet selects it immediately`() {
             val ts = TabSheet()
             val c = Span("it works!")
             val tab = ts.addTab("foo", c)
             expect(c) { ts.selectedTabContents }
         }
-        test("Adding a tab to a non-empty TabSheet doesn't change the selection") {
+        @Test fun `Adding a tab to a non-empty TabSheet doesn't change the selection`() {
             val ts = TabSheet()
             val c = Span("it works!")
             val tab = ts.addTab("foo", c)
             ts.addTab("bar", Span("it works 2!"))
             expect(c) { ts.selectedTabContents }
         }
-        test("Removing last tab clears selection") {
+        @Test fun `Removing last tab clears selection`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works!"))
             ts.remove(tab)
             expect(null) { ts.selectedTabContents }
         }
-        test("Removing all tabs clears selection") {
+        @Test fun `Removing all tabs clears selection`() {
             val ts = TabSheet()
             ts.addTab("foo", Span("it works!"))
             ts.removeAll()
             expect(null) { ts.selectedTabContents }
         }
-        test("Adding a tab with null contents works") {
+        @Test fun `Adding a tab with null contents works`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo")
             expect(null) { ts.selectedTabContents }
         }
-        test("Add lazy tab") {
+        @Test fun `Add lazy tab`() {
             val ts = TabSheet()
             val c = Span("it works!")
             val tab = ts.addLazyTab("foo") { c }
@@ -254,58 +257,58 @@ class TabSheetTest : DynaTest({
         }
     }
 
-    group("tabs") {
-        test("empty when no tabs") {
+    @Nested inner class tabs {
+        @Test fun `empty when no tabs`() {
             expectList() { TabSheet().tabs }
         }
-        test("adding 1 tab") {
+        @Test fun `adding 1 tab`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works"))
             expectList(tab) { ts.tabs }
         }
-        test("two tabs") {
+        @Test fun `two tabs`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works"))
             val tab2 = ts.addTab("bar", Span("it works 2"))
             expectList(tab, tab2) { ts.tabs }
         }
-        test("10 tabs") {
+        @Test fun `10 tabs`() {
             val ts = TabSheet()
             val tabs = (0..9).map { ts.addTab("tab $it") }
             expect(tabs) { ts.tabs }
         }
-        test("Removing last tab clears the tab list") {
+        @Test fun `Removing last tab clears the tab list`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works"))
             ts.remove(tab)
             expectList() { ts.tabs }
         }
-        test("Removing all tabs clears the tab list") {
+        @Test fun `Removing all tabs clears the tab list`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works"))
             ts.removeAll()
             expectList() { ts.tabs }
         }
-        test("Adding a tab with null contents adds the tab") {
+        @Test fun `Adding a tab with null contents adds the tab`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo")
             expectList(tab) { ts.tabs }
         }
-        test("Adding lazy tabs") {
+        @Test fun `Adding lazy tabs`() {
             val ts = TabSheet()
             val tabs = (0..9).map { ts.addLazyTab("lazy $it") { Span("foo") } }
             expect(tabs) { ts.tabs }
         }
     }
 
-    group("tab contents") {
-        test("non-empty contents") {
+    @Nested inner class `tab contents` {
+        @Test fun `non-empty contents`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works"))
             expect<Class<*>>(Span::class.java) { ts.getTabContents(tab)!!.javaClass }
         }
 
-        test("clearing contents") {
+        @Test fun `clearing contents`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("it works"))
             expect<Class<*>>(Span::class.java) { ts.getTabContents(tab)!!.javaClass }
@@ -314,14 +317,14 @@ class TabSheetTest : DynaTest({
             ts._expectNone<Span>()
         }
     }
-    group("find contents") {
-        test("empty tab") {
+    @Nested inner class `find contents` {
+        @Test fun `empty tab`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo")
             expect(null) { ts.findTabWithContents(Span("bar")) }
         }
         
-        test("simple test") {
+        @Test fun `simple test`() {
             val ts = TabSheet()
             val c = Span("contents")
             val tab = ts.addTab("foo", c)
@@ -329,8 +332,8 @@ class TabSheetTest : DynaTest({
         }
     }
 
-    group("lazy tabs") {
-        test("addFirstLazyTabImmediatelyInvokesClosure") {
+    @Nested inner class `lazy tabs`() {
+        @Test fun addFirstLazyTabImmediatelyInvokesClosure() {
             val ts = TabSheet()
             val producedLabel = Label("baz")
             ts.addLazyTab("foo") { producedLabel }
@@ -339,7 +342,7 @@ class TabSheetTest : DynaTest({
             expect(producedLabel) { ts._get<Label>() }
         }
 
-        test("addSecondLazyTabDelaysClosure") {
+        @Test fun addSecondLazyTabDelaysClosure() {
             val ts = TabSheet()
             val producedLabel = Label("baz")
             var allowInvoking = false
@@ -359,7 +362,7 @@ class TabSheetTest : DynaTest({
             ts._expectOne<Label>()
         }
 
-        test("lazy tab computed exactly once") {
+        @Test fun `lazy tab computed exactly once`() {
             val ts = TabSheet()
             val tab1 = ts.addTab("bar")
             var callCount = 0
@@ -380,13 +383,13 @@ class TabSheetTest : DynaTest({
         }
     }
 
-    group("indexOf") {
-        test("0 for 1st tab") {
+    @Nested inner class indexOf {
+        @Test fun `0 for 1st tab`() {
             val ts = TabSheet()
             val tab = ts.addTab("foo", Span("bar"))
             expect(0) { ts.indexOf(tab) }
         }
-        test("two tabs") {
+        @Test fun `two tabs`() {
             val ts = TabSheet()
             val tab1 = ts.addTab("foo", Span("it works"))
             val tab2 = ts.addTab("bar", Span("it works 2"))
@@ -394,4 +397,4 @@ class TabSheetTest : DynaTest({
             expect(1) { ts.indexOf(tab2) }
         }
     }
-})
+}

@@ -1,17 +1,17 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
+import org.junit.jupiter.api.Test
 import kotlin.test.expect
 
-class NativeSelectTest : DynaTest({
-    test("smoke") {
+class NativeSelectTest {
+    @Test fun smoke() {
         NativeSelect<String>()
     }
-    test("label") {
+    @Test fun label() {
         val select = NativeSelect<String>("foo")
         expect("foo") { select.label }
     }
-    test("items") {
+    @Test fun items() {
         NativeSelect("foo", listOf("a", "b", "c"))
     }
-})
+}

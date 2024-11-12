@@ -1,16 +1,16 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
-import com.github.mvysny.dynatest.expectList
 import com.github.mvysny.kaributesting.v10.getItemLabels
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 import kotlin.test.expect
 
-class RadioButtonGroupCompatTest : DynaTest({
-    test("smoke") {
+class RadioButtonGroupCompatTest {
+    @Test fun smoke() {
         RadioButtonGroupCompat<String>()
     }
-    test("items not escaped") {
+    @Test fun `items not escaped`() {
         val r = RadioButtonGroupCompat<String>(
             null, listOf(
                 "<strong>strong</strong>",
@@ -18,13 +18,13 @@ class RadioButtonGroupCompatTest : DynaTest({
                 "<u>underline</u>"
             )
         )
-        expectList(
+        expect(listOf(
             "<strong>strong</strong>",
             "<i>italics</i>",
-            "<u>underline</u>"
+            "<u>underline</u>")
         ) { r.getItemLabels() }
     }
-    test("items escaped") {
+    @Test fun `items escaped`() {
         val r = RadioButtonGroupCompat<String>(
             null, listOf(
                 "<strong>strong</strong>",
@@ -33,13 +33,13 @@ class RadioButtonGroupCompatTest : DynaTest({
             )
         )
         r.isHtmlContentAllowed = true
-        expectList(
+        expect(listOf(
             "HtmlSpan[innerHTML='<strong>strong</strong>']",
             "HtmlSpan[innerHTML='<i>italics</i>']",
-            "HtmlSpan[innerHTML='<u>underline</u>']"
+            "HtmlSpan[innerHTML='<u>underline</u>']")
         ) { r.getItemLabels() }
     }
-    test("items not escaped with tooltips") {
+    @Test fun `items not escaped with tooltips`() {
         val r = RadioButtonGroupCompat<String>(
             listOf(
                 "<strong>strong</strong>",
@@ -48,13 +48,13 @@ class RadioButtonGroupCompatTest : DynaTest({
             )
         )
         r.setItemDescriptionGenerator { it }
-        expectList(
+        expect(listOf(
             "Span[text='<strong>strong</strong>', @title='<strong>strong</strong>']",
             "Span[text='<i>italics</i>', @title='<i>italics</i>']",
-            "Span[text='<u>underline</u>', @title='<u>underline</u>']"
+            "Span[text='<u>underline</u>', @title='<u>underline</u>']")
         ) { r.getItemLabels() }
     }
-    test("items escaped with tooltips") {
+    @Test fun `items escaped with tooltips`() {
         val r = RadioButtonGroupCompat<String>(
             listOf(
                 "<strong>strong</strong>",
@@ -64,18 +64,18 @@ class RadioButtonGroupCompatTest : DynaTest({
         )
         r.isHtmlContentAllowed = true
         r.setItemDescriptionGenerator { it }
-        expectList(
+        expect(listOf(
             "HtmlSpan[@title='<strong>strong</strong>', innerHTML='<strong>strong</strong>']",
             "HtmlSpan[@title='<i>italics</i>', innerHTML='<i>italics</i>']",
-            "HtmlSpan[@title='<u>underline</u>', innerHTML='<u>underline</u>']"
+            "HtmlSpan[@title='<u>underline</u>', innerHTML='<u>underline</u>']")
         ) { r.getItemLabels() }
     }
-    group("vertical") {
-        test("true by default") {
+    @Nested inner class vertical {
+        @Test fun `true by default`() {
             expect(true) { RadioButtonGroupCompat<String>().isVertical }
             expect(true) { RadioButtonGroupCompat<String>(listOf("a")).isVertical }
         }
-        test("setting the value") {
+        @Test fun `setting the value`() {
             val r = RadioButtonGroupCompat<String>()
             r.isVertical = false
             expect(false) { r.isVertical }
@@ -85,4 +85,4 @@ class RadioButtonGroupCompatTest : DynaTest({
             expect(true) { r.themeNames.contains(RadioGroupVariant.LUMO_VERTICAL.variantName )}
         }
     }
-})
+}

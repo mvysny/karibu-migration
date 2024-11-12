@@ -1,21 +1,23 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.kaributesting.v10.MockVaadin
 import com.vaadin.flow.component.UI
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import kotlin.test.expect
 
-class HtmlSpanTest : DynaTest({
-    beforeEach { MockVaadin.setup() }
-    afterEach { MockVaadin.tearDown() }
+class HtmlSpanTest {
+    @BeforeEach fun fakeVaadin() { MockVaadin.setup() }
+    @AfterEach fun tearDownVaadin() { MockVaadin.tearDown() }
 
-    test("smoke") {
+    @Test fun smoke() {
         UI.getCurrent().add(HtmlSpan())
         UI.getCurrent().add(HtmlSpan("foo"))
         UI.getCurrent().add(HtmlSpan("foo<p>bar</p>baz"))
     }
 
-    test("innerhtml") {
+    @Test fun innerhtml() {
         val s = HtmlSpan()
         s.innerHtml = "foo"
         expect("foo") { s.innerHtml }
@@ -24,4 +26,4 @@ class HtmlSpanTest : DynaTest({
         s.innerHtml = null
         expect("") { s.innerHtml }
     }
-})
+}

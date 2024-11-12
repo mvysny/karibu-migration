@@ -1,20 +1,20 @@
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaTest
-import com.github.mvysny.dynatest.expectList
 import com.github.mvysny.kaributesting.v10.getRenderedItems
+import org.junit.jupiter.api.Test
+import kotlin.test.expect
 
-class ListSelectTest : DynaTest({
-    test("smoke") {
+class ListSelectTest {
+    @Test fun smoke() {
         ListSelect<String>()
         ListSelect<String>("foo")
         ListSelect("bar", listOf(2, 5))
     }
 
-    test("setItemCaptionGenerator()") {
+    @Test fun setItemCaptionGenerator() {
         val ls = ListSelect("bar", listOf(2, 5))
         ls.setItemCaptionGenerator { "item $it" }
         // https://github.com/mvysny/karibu-testing/issues/98
-        expectList("item 2", "item 5") { ls.getRenderedItems() }
+        expect(listOf("item 2", "item 5")) { ls.getRenderedItems() }
     }
-})
+}

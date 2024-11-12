@@ -1,21 +1,23 @@
+@file:Suppress("DEPRECATION")
+
 package com.github.mvysny.karibumigration
 
-import com.github.mvysny.dynatest.DynaNodeGroup
-import com.github.mvysny.dynatest.DynaTest
-import com.github.mvysny.dynatest.expectThrows
 import com.vaadin.flow.component.html.Div
 import com.vaadin.flow.component.html.Span
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.expect
 
-class HorizontalSplitPlanelTest : DynaTest({
-    test("smoke") {
+class HorizontalSplitPlanelTest {
+    @Test fun smoke() {
         HorizontalSplitPanel()
     }
-    splitLayoutCompatTests { HorizontalSplitPanel() }
-})
+    @Nested inner class HorizontalSplitPanelTests : AbstractSplitLayoutCompatTests({ HorizontalSplitPanel() })
+}
 
-fun DynaNodeGroup.splitLayoutCompatTests(factory: () -> SplitLayoutCompat) {
-    test("first/second component") {
+abstract class AbstractSplitLayoutCompatTests(val factory: () -> SplitLayoutCompat) {
+    @Test fun `first-second component`() {
         val p = factory()
         expect(null) { p.firstComponent }
         expect(null) { p.secondComponent }
@@ -27,7 +29,7 @@ fun DynaNodeGroup.splitLayoutCompatTests(factory: () -> SplitLayoutCompat) {
         expect(sc) { p.secondComponent }
     }
 
-    test("add component") {
+    @Test fun `add component`() {
         val p = factory()
         expect(null) { p.firstComponent }
         expect(null) { p.secondComponent }
@@ -39,12 +41,12 @@ fun DynaNodeGroup.splitLayoutCompatTests(factory: () -> SplitLayoutCompat) {
         p.addComponent(sc)
         expect(fc) { p.firstComponent }
         expect(sc) { p.secondComponent }
-        expectThrows(UnsupportedOperationException::class) {
+        assertThrows<UnsupportedOperationException> {
             p.addComponent(Span())
         }
     }
 
-    test("remove component") {
+    @Test fun `remove component`() {
         val p = factory()
         val fc = Div()
         p.addComponent(fc)
@@ -61,7 +63,7 @@ fun DynaNodeGroup.splitLayoutCompatTests(factory: () -> SplitLayoutCompat) {
         expect(null) { p.secondComponent }
     }
 
-    test("component count") {
+    @Test fun `component count`() {
         val p = factory()
         expect(0) { p.componentCount }
         val fc = Div()
@@ -78,7 +80,7 @@ fun DynaNodeGroup.splitLayoutCompatTests(factory: () -> SplitLayoutCompat) {
         expect(0) { p.componentCount }
     }
 
-    test("setting firstComponent multiple times removes the previous one") {
+    @Test fun `setting firstComponent multiple times removes the previous one`() {
         val p = factory()
         expect(null) { p.firstComponent }
         val fc = Span("first")
@@ -90,7 +92,7 @@ fun DynaNodeGroup.splitLayoutCompatTests(factory: () -> SplitLayoutCompat) {
         expect(null) { fc.parent.orElse(null) }
     }
 
-    test("setting secondComponent multiple times removes the previous one") {
+    @Test fun `setting secondComponent multiple times removes the previous one`() {
         val p = factory()
         expect(null) { p.secondComponent }
         val fc = Span("first")
