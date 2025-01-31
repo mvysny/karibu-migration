@@ -5,7 +5,6 @@ dependencies {
     // IDEA language injections
     api(libs.jetbrains.annotations)
 
-    testImplementation(kotlin("stdlib-jdk8"))
     testImplementation(libs.vaadin.core)
     testImplementation(libs.junit)
     testImplementation(libs.slf4j.simple)
