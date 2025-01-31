@@ -4,7 +4,6 @@ kotlin {
 
 dependencies {
     api(libs.karibu.tools)
-    api(kotlin("stdlib-jdk8"))
     api(project(":karibu-migration-common"))
     // Vaadin
     compileOnly(libs.vaadin.core)
